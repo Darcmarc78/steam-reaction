@@ -1,0 +1,41 @@
+{
+  "name": "steam-reaction",
+  "version": "1.0.0",
+  "private": true,
+  "description": "steam-reaction",
+  "author": "Darcmarc78",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^2.1.4",
+    "gatsby": "^5.2.0",
+    "gatsby-cli": "^5.2.0",
+    "gatsby-plugin-image": "^0.7.2",
+    "gatsby-plugin-mdx": "^5.2.0",
+    "gatsby-plugin-sharp": "^5.2.0",
+    "gatsby-plugin-sitemap": "^2.12.0",
+    "gatsby-source-filesystem": "^5.2.0",
+    "gatsby-transformer-sharp": "^5.2.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "autoprefixer": "^10.4.12",
+    "gatsby-plugin-dts-css-modules": "^3.0.0",
+    "gatsby-plugin-postcss": "^3.7.0",
+    "postcss": "^8.4.17",
+    "typescript": "^4.8.3"
+  }
+}

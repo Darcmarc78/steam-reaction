@@ -1,3 +1,8 @@
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+
 # Logs
 logs
 *.log
@@ -104,5 +109,6 @@ public/static
 
 # TernJS port file
 .tern-port
+package-lock.json
 src/gatsby-types.d.ts
 src/styles/layout.module.css.d.ts
