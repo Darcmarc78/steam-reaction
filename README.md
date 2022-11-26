@@ -1,6 +1,7 @@
 # steam-reaction
-web app to get experience with react, typescript, bootstrap. integrating `steam-api`
+Web app to get experience with gatsby, react, typescript, bootstrap. integrating `steam-api`
 
-# Frameworks Used
-[Tailwind CSS](https://tailwindcss.com/docs/guides/gatsby)
-[Gatsby](https://www.gatsbyjs.com/docs/quick-start)
+# Get Started
+Clone repo
+`npm install`
+`npm run develop` to build, should run.
