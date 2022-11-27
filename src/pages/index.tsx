@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import {SEO} from '../components/seo'
 
 const HomePage = () => {
   return (
@@ -9,6 +10,9 @@ const HomePage = () => {
   )
 }
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => (
+  <title>Home Page</title>
+  <SEO />
+) 
 
 export default HomePage
