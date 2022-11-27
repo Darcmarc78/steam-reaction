@@ -4,15 +4,14 @@ import {SEO} from '../components/seo'
 
 const HomePage = () => {
   return (
-    <Layout pageTitle="Home Page">
+    <Layout pageTitle='Home Page'>
       <p>I'm making this by following the Gatsby Tutorial.</p>
     </Layout>
   )
 }
 
 export const Head = () => (
-  <title>Home Page</title>
-  <SEO />
+  <SEO title={''} description={''} pathname={''} children={undefined} />
 ) 
 
 export default HomePage
