@@ -3,7 +3,9 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Steam Reaction`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `http://localhost:8000`,
+    twitterUsername: `@TheRock`,
+    image: `/gatsby-icon-root.png`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -32,5 +34,15 @@ const config: GatsbyConfig = {
     __key: "pages"
   }]
 };
+
+/* module.exports = {
+  siteMetadata: {
+    title: `Using Gatsby Head`,
+    description: `Example project for the Gatsby Head API`,
+    twitterUsername: `@gatsbyjs`,
+    image: `/gatsby-icon.png`,
+    siteUrl: `https://www.yourdomain.tld`,
+  },
+} */
 
 export default config;
