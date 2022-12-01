@@ -34,6 +34,11 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
               Library
             </Link>
           </li>
+          <li className={navLinkItem}>
+            <Link to="/discussion" className={navLinkText}>
+              Discussion
+            </Link>
+          </li>
         </ul>
       </nav>
       <main>
