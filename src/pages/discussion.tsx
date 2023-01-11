@@ -8,7 +8,7 @@ const DiscussionHomePage = () => {
   return (
     <div>
       <Layout pageTitle={discussionTitle} >
-        <span>Search Bar: "What's your favorite game?"</span>
+        <p>Search Bar: "What's your favorite game?"</p>
       </Layout>
     </div>
   )
