@@ -1,21 +1,43 @@
 import React from "react"
 import Layout from "../components/layout"
+import {graphql} from "gatsby"
+import type { PageProps } from "gatsby"
 import { SEO } from "../components/seo"
 
 const discussionTitle = 'Discussion Home'
 
-const DiscussionHomePage = () => {
+type discussionProps = {
+  data: any
+}
+
+const DiscussionHomePage = ({data: PageProps) => {
   return (
     <div>
-      <Layout pageTitle={discussionTitle} >
-        <p>Search Bar: "What's your favorite game?"</p>
-      </Layout>
+      <ul>
+        {
+          data.allFile.nodes.map(node => (
+            <li key={node.name}>
+              {node.name}
+            </li>
+          ))
+        }
+      </ul>
     </div>
   )
 }
 
-export default DiscussionHomePage
+export const getDiscussion = graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`
 
 export const Head = () => (
   <SEO title={discussionTitle} description={'Find thread about your favorite games here!'} pathname={''} children={undefined} />
 )
+
+export default DiscussionHomePage
