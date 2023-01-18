@@ -1,35 +1,41 @@
 import React from "react"
 import Layout from "../components/layout"
 import {graphql} from "gatsby"
-import type { PageProps } from "gatsby"
 import { SEO } from "../components/seo"
+import { PageProps } from "gatsby"
 
 const discussionTitle = 'Discussion Home'
 
-type discussionProps = {
-  data: any
+interface DiscussionProps {
+  data: {
+    allFile:{
+      nodes: any 
+    }
+  }
 }
 
-const DiscussionHomePage = ({data: PageProps) => {
+const DiscussionHomePage = ({ data: {allFile }}: DiscussionProps) => {
   return (
     <div>
-      <ul>
-        {
-          data.allFile.nodes.map(node => (
-            <li key={node.name}>
-              {node.name}
-            </li>
-          ))
-        }
-      </ul>
+      <Layout pageTitle="Discussion Pages">
+        <ul>
+          {
+            allFile.nodes.map((node: any) => (
+              <li key={node.name}>
+                {node.name}
+              </li>
+            ))
+          }
+        </ul>
+      </Layout>
     </div>
   )
 }
 
 export const getDiscussion = graphql`
   query {
-    allFile {
-      nodes {
+    allFile (filter: {sourceInstanceName: {eq: "blog"}}){
+      nodes{
         name
       }
     }
