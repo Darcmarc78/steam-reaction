@@ -25,21 +25,36 @@ const config: GatsbyConfig = {
       "path": `${__dirname}/src/images`
     },
     __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": `${__dirname}/src/pages`
+    }, {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": `${__dirname}/src/pages`
+      },
+      __key: "pages"
+    }, {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "blog",
+        "path": `${__dirname}/blog`
+      },
+      __key: "blog"
     },
-    __key: "pages"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "blog",
-      "path": `${__dirname}/blog`
+    "gatsby-plugin-mdx",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
     },
-    __key: "blog"
-  }]
+  ]
 };
 
 /* module.exports = {
