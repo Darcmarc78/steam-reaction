@@ -8,22 +8,24 @@ const discussionTitle = 'Discussion Home'
 
 interface DiscussionProps {
   data: {
-    allFile:{
+    allMdx:{
       nodes: any 
     }
   }
 }
 
-const DiscussionHomePage = ({ data: {allFile }}: DiscussionProps) => {
+const DiscussionHomePage = ({ data: {allMdx }}: DiscussionProps) => {
   return (
     <div>
       <Layout pageTitle="Discussion Pages">
         <ul>
           {
-            allFile.nodes.map((node: any) => (
-              <li key={node.name}>
-                {node.name}
-              </li>
+            allMdx.nodes.map((node: any) => (
+              <article key={node.id}>
+                <h2>{node.frontmatter.title}</h2>
+                <p>Posted: {node.frontmatter.date}</p>
+                <p>{node.excerpt}</p>
+              </article>
             ))
           }
         </ul>
@@ -33,10 +35,15 @@ const DiscussionHomePage = ({ data: {allFile }}: DiscussionProps) => {
 }
 
 export const getDiscussion = graphql`
-  query {
-    allFile (filter: {sourceInstanceName: {eq: "blog"}}){
-      nodes{
-        name
+  query GetBlogFrontMatter {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
   }
