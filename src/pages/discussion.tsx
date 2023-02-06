@@ -6,7 +6,7 @@ import { PageProps } from "gatsby"
 
 const discussionTitle = 'Discussion Home'
 
-interface DiscussionProps {
+interface DiscussionHomeProps {
   data: {
     allMdx:{
       nodes: any 
@@ -14,7 +14,7 @@ interface DiscussionProps {
   }
 }
 
-const DiscussionHomePage = ({ data: {allMdx }}: DiscussionProps) => {
+const DiscussionHomePage = ({ data: {allMdx }}: DiscussionHomeProps) => {
   return (
     <div>
       <Layout pageTitle="Discussion Pages">
