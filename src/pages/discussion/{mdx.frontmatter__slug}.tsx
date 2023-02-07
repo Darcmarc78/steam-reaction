@@ -1,30 +1,33 @@
 import { graphql } from 'gatsby'
-import { maxHeaderSize } from 'http'
 import * as React from 'react'
 import Layout from '../../components/layout'
 import {SEO} from '../../components/seo'
+import { PageProps } from 'gatsby'
 
+// interface BlogPostProps {
+  //   data: {
+//     mdx:{
+  //       nodes: any 
+//     }
+//   },
+//   children: React.ReactNode
+// }
 
-interface BlogPostProps {
-  data: {
-    mdx:{
-      nodes: any 
-    }
-  },
-  children: React.ReactNode
-}
-
-const BlogPost = ({data: {mdx}, children}: BlogPostProps) => {
+const BlogPostPage = ({data, children}: PageProps<Queries.BlogPostPageQuery>) => {
+  const post = data.mdx
+  if(!post) console.log('Null')
   return (
-    <Layout pageTitle={mdx.nodes.frontmatter.title}>
-      <p>{mdx.nodes.frontmatter.date}</p>
+    <Layout pageTitle={data.mdx.frontmatter.title}>
+      <p>{data.mdx.frontmatter.date}</p>
       {children}
     </Layout>
   )
 }
 
+export default BlogPostPage
+
 export const query = graphql`
-  query ($id: String) {
+  query BlogPostPage ($id: String) {
     mdx(id: {eq: $id}) {
       frontmatter {
         title
@@ -43,5 +46,3 @@ interface HeadLayerProps{
 }
 
 export const Head = ({data: {mdx}} : HeadLayerProps) => <SEO title={mdx.nodes.frontmatter.title} description={''} pathname={''} children={undefined} />
-
-export default BlogPost
