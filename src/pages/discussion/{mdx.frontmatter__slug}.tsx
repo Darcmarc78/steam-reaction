@@ -14,11 +14,9 @@ import { PageProps } from 'gatsby'
 // }
 
 const BlogPostPage = ({data, children}: PageProps<Queries.BlogPostPageQuery>) => {
-  const post = data.mdx
-  if(!post) console.log('Null')
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p>{data.mdx.frontmatter.date}</p>
+    <Layout pageTitle={String(data.mdx?.frontmatter?.title)}>
+      <p>{data.mdx?.frontmatter?.date}</p>
       {children}
     </Layout>
   )
@@ -37,12 +35,4 @@ export const query = graphql`
   }
 `
 
-interface HeadLayerProps{
-  data: {
-    mdx:{
-      nodes: any 
-    }
-  }
-}
-
-export const Head = ({data: {mdx}} : HeadLayerProps) => <SEO title={mdx.nodes.frontmatter.title} description={''} pathname={''} children={undefined} />
+export const Head = ({data} : PageProps<Queries.BlogPostPageQuery>) => <SEO title={String(data.mdx?.frontmatter?.title)} description={''} pathname={''} children={undefined} />
