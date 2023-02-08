@@ -22,7 +22,7 @@
     "gatsby-plugin-image": "^0.7.2",
     "gatsby-plugin-mdx": "^5.4.0",
     "gatsby-plugin-sharp": "^5.4.0",
-    "gatsby-plugin-sitemap": "^2.12.0",
+    "gatsby-plugin-sitemap": "^6.5.0",
     "gatsby-remark-images": "^7.4.0",
     "gatsby-source-filesystem": "^5.2.0",
     "gatsby-transformer-remark": "^6.4.0",
@@ -36,7 +36,7 @@
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
     "gatsby-plugin-dts-css-modules": "^3.0.0",
-    "gatsby-plugin-postcss": "^3.7.0",
+    "gatsby-plugin-postcss": "^6.5.0",
     "postcss": "^8.4.17",
     "typescript": "^4.8.3"
   }

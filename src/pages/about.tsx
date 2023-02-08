@@ -6,7 +6,8 @@ const AboutPage = () => {
   return (
     <div>
       <Layout pageTitle='About Me' >
-        <p>Hi there! OVO sound radio, issa east-side ting ehh</p>
+        <p>Hi there! This is a React.js + Gatsby web app that will eventually become:</p>
+        <h1>Steam Reaction</h1>
       </Layout>
     </div>
   )
