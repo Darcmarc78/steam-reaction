@@ -1,23 +1,17 @@
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import * as React from 'react'
 import Layout from '../../components/layout'
 import {SEO} from '../../components/seo'
 import { PageProps } from 'gatsby'
-
-// interface BlogPostProps {
-  //   data: {
-//     mdx:{
-  //       nodes: any 
-//     }
-//   },
-//   children: React.ReactNode
-// }
 
 const BlogPostPage = ({data, children}: PageProps<Queries.BlogPostPageQuery>) => {
   return (
     <Layout pageTitle={String(data.mdx?.frontmatter?.title)}>
       <p>{data.mdx?.frontmatter?.date}</p>
       {children}
+      <Link to="/discussion">
+        <p>Back</p>
+      </Link>
     </Layout>
   )
 }
