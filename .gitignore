@@ -1,3 +1,8 @@
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+
 # Logs
 logs
 *.log
@@ -86,7 +91,9 @@ dist
 .cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+public/~partytown
+public/page-data
+public/static
 
 # vuepress build output
 .vuepress/dist
@@ -102,3 +109,6 @@ dist
 
 # TernJS port file
 .tern-port
+package-lock.json
+src/gatsby-types.d.ts
+src/styles/layout.module.css.d.ts
