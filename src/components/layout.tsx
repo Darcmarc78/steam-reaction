@@ -17,6 +17,7 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
     <div className={container}>
       {/* @darcmarc78 - Should include custom Navbar here eventually */}
+      {/* TODO - Extract "nav" into separate component */}
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
@@ -42,7 +43,7 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
         </ul>
       </nav>
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
+        <h1 className="text-3xl font-bold underline">{pageTitle}</h1>
         {children}
       </main>
     </div>

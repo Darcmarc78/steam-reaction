@@ -16,6 +16,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-postcss",
     "gatsby-plugin-dts-css-modules",
     "gatsby-transformer-sharp",
     {
