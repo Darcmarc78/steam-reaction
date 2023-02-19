@@ -1,13 +1,5 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import {
-  container,
-  navLinks,
-  heading,
-  navLinkItem,
-  navLinkText
-} from '../styles/layout.module.css'
-
 type LayoutProps = {
   pageTitle: string,
   children: React.ReactNode 
@@ -15,32 +7,36 @@ type LayoutProps = {
 
 const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
-    <div className={container}>
+    <div>
       {/* @darcmarc78 - Should include custom Navbar here eventually */}
       {/* TODO - Extract "nav" into separate component */}
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/library" className={navLinkText}>
-              Library
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/discussion" className={navLinkText}>
-              Discussion
-            </Link>
-          </li>
-        </ul>
+      <nav className="">
+        <div className="max-w-2xl mx-auto border border-red-300">
+          <ul className="">
+            <li className="">
+              {/* logo redirect to home */}
+              <Link to="/" className="">
+                Home
+              </Link>
+            </li>
+            <li className="">
+              <Link to="/about" className="">
+                About
+              </Link>
+            </li>
+            <li className="">
+              <Link to="/library" className="">
+                Library
+              </Link>
+            </li>
+            <li className="">
+              <Link to="/discussion" className="">
+                Discussion
+              </Link>
+            </li>
+          </ul>
+        </div>
+          
       </nav>
       <main>
         <h1 className="text-3xl font-bold underline">{pageTitle}</h1>

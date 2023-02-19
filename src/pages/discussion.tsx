@@ -14,7 +14,7 @@ const DiscussionHomePage = ({ data: {allMdx }}: PageProps<Queries.DiscussionHome
           {
             allMdx.nodes.map((node: any) => (
               <article key={node.id}>
-                <h2>
+                <h2 className="text-2xl font-semibold">
                   <Link to={`/discussion/${node.frontmatter.slug}`}>
                     {node.frontmatter.title}
                   </Link>
