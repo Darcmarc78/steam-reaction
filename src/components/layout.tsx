@@ -11,7 +11,7 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
       {/* @darcmarc78 - Should include custom Navbar here eventually */}
       {/* TODO - Extract "nav" into separate component */}
       <nav className="">
-        <div className="max-w-2xl mx-auto border border-red-300">
+        <div className="mx-auto max-w-2xl border border-red-300">
           <ul className="">
             <li className="">
               {/* logo redirect to home */}
@@ -36,9 +36,8 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
             </li>
           </ul>
         </div>
-          
       </nav>
-      <main>
+      <main className="self-center">
         <h1 className="text-3xl font-bold underline">{pageTitle}</h1>
         {children}
       </main>
