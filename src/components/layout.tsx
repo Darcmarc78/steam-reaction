@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from "react"
+import { Link } from "gatsby"
 type LayoutProps = {
-  pageTitle: string,
-  children: React.ReactNode 
+  pageTitle: string
+  children: React.ReactNode
 }
 
 const Layout = ({ pageTitle, children }: LayoutProps) => {
@@ -10,8 +10,9 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
     <div>
       {/* @darcmarc78 - Should include custom Navbar here eventually */}
       {/* TODO - Extract "nav" into separate component */}
+      <nav
       <nav className="">
-        <div className="mx-auto max-w-2xl border border-red-300">
+        <div className="mx-auto max-w-2xl border-4 border-black">
           <ul className="">
             <li className="">
               {/* logo redirect to home */}
@@ -37,9 +38,11 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
           </ul>
         </div>
       </nav>
-      <main className="self-center">
-        <h1 className="text-3xl font-bold underline">{pageTitle}</h1>
-        {children}
+      <main>
+        <div className="flex justify-center flex-col">
+          <h1 className="text-3xl font-bold underline">{pageTitle}</h1>
+          {children}
+        </div>
       </main>
     </div>
   )
