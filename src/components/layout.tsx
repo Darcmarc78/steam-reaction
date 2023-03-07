@@ -9,7 +9,9 @@ type LayoutProps = {
 const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
     <div>
-      <Navbar />
+      <div className=" container mx-auto">
+        <Navbar />
+      </div>
       <main>
         <div className="flex justify-center flex-col">
           <h1 className="text-3xl font-bold underline">{pageTitle}</h1>

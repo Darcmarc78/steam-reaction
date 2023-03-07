@@ -3,33 +3,32 @@ import { Link } from "gatsby"
 
 const Navbar = () => {
   return (
-    <div>
-      <nav className="">
-        <div className="mx-auto max-w-2xl border-4 border-black">
-          <ul className="">
-            <li className="">
-              {/* logo redirect to home */}
-              <Link to="/" className="">
-                Steam Reaction
-              </Link>
-            </li>
-            <li className="">
+    <div className="">
+      <nav className="container mx-auto ">
+        <ul className="flex flex-row">
+          <li className="items-center">
+            <Link to="/" className=" px-8 text-3xl ">
+              Steam Reaction
+            </Link>
+          </li>
+          <div className="flex flex-row items-center">
+            <li className="px-4">
               <Link to="/about" className="">
                 About
               </Link>
             </li>
-            <li className="">
+            <li className="px-4">
               <Link to="/library" className="">
                 Library
               </Link>
             </li>
-            <li className="">
+            <li className="px-4">
               <Link to="/discussion" className="">
                 Discussion
               </Link>
             </li>
-          </ul>
-        </div>
+          </div>
+        </ul>
       </nav>
     </div>
   )
