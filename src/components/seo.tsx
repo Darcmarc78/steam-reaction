@@ -5,7 +5,7 @@ type SeoProps = {
     title: string,
     description: string,
     pathname: string,
-    children: React.ReactNode
+  children: React.ReactNode
 }
 
 export const SEO = ({ title, description, pathname, children }: SeoProps) => {
