@@ -4,9 +4,9 @@ import { Link } from "gatsby"
 const Navbar = () => {
   return (
     <div className="">
-      <nav className="container mx-auto ">
+      <nav className="">
         <ul className="flex flex-row">
-          <li className="items-center">
+          <li className="">
             <Link to="/" className=" px-8 text-3xl ">
               Steam Reaction
             </Link>
@@ -26,6 +26,10 @@ const Navbar = () => {
               <Link to="/discussion" className="">
                 Discussion
               </Link>
+            </li>
+            {/* Most likely custom login component*/}
+            <li className="inset-y-0 right-0 px-4 ">
+              <a>Login/Logout</a>
             </li>
           </div>
         </ul>
