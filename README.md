@@ -9,6 +9,7 @@ This is a simple web app to get data from the [Steam API](https://steamcommunity
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind](https://tailwindcss.com/)
 - [GraphQL](https://graphql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Installation
 1. Clone the repo to your local environment
