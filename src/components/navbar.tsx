@@ -28,8 +28,11 @@ const Navbar = () => {
               </Link>
             </li>
             {/* Most likely custom login component*/}
-            <li className="inset-y-0 right-0 px-4 ">
-              <a>Login/Logout</a>
+            {/* Place holder steam profile link */}
+            <li className="px-4">
+              <Link to="/steam/profile" className="">
+                Steam Profile
+              </Link>
             </li>
           </div>
         </ul>

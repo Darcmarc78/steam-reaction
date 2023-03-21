@@ -5,20 +5,17 @@ import { SEO } from "../../components/seo"
 import { PageProps } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 /* 
-const ProfilePage = ({
-  data,
-  children,
-}: PageProps<Queries.ProfilePageQuery>) => {
+const ProfilePage = () => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero_image)!
   return (
-    <Layout pageTitle={String(data.mdx?.frontmatter?.title)}>
+    <Layout pageTitle="">
       {/* Steam user Profile pic: 
         Desktop Viewport: 170px X 170px
         Mobile Viewport: 120px X 120px
       *//* } */
       {/* <GatsbyImage
         image={heroImage}
-        alt={String(data.mdx?.frontmatter?.hero_image_alt)}
+        alt={String()}
       /> */}
       {/* Profile Name: 
       Desktop Viewport: <h2/>, right of Profile Picture

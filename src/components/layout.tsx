@@ -16,7 +16,7 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
         <Searchbar />
       </div>
       <main>
-        <div className="flex flex-col justify-center">
+        <div className="container mx-auto flex flex-col justify-center">
           <h1 className="text-3xl font-bold underline">{pageTitle}</h1>
           {children}
         </div>
