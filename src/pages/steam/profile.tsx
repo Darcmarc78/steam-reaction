@@ -5,29 +5,28 @@ import { SEO } from "../../components/seo"
 import { PageProps } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 
+const profileName = "Placeholder Profile"
+
 const ProfilePage = ({
-  data,
-  children,
+  data
 }: PageProps<Queries.ProfilePageQuery>) => {
   const profileImage = getImage(data.imageSharp?.gatsbyImageData)!
   return (
-    <Layout pageTitle="Steam Profile">
+    <Layout pageTitle={profileName}>
       <div className="flex flex-row items-center">
         <GatsbyImage image={profileImage} alt={"Placeholder Profile Picture"} />
-        <StaticImage
+        {/* <StaticImage
           src="../../images/janko-ferlic-sfL_QOnmy00-unsplash.jpg"
           alt="stock image of library"
           placeholder="blurred"
           width={170}
           height={170}
-        />
+        /> */}
         {/* Profile Name: 
           Desktop Viewport: <h2/>, right of Profile Picture
           Mobile Viewport: <h2/>, Centered under profilepicture
         */}
-        <h1 className="flex flex-1 justify-center text-2xl">
-          Placeholder Profile
-        </h1>
+        <h1 className="flex flex-1 justify-center text-2xl">{profileName}</h1>
       </div>
 
       {/* Steam Library Component:
@@ -52,27 +51,17 @@ export default ProfilePage
 // = "20d663d7-151a-5c75-a853-00efe6137484"
 
 export const query = graphql`
-  query ProfilePage($id: String) {
-    imageSharp(id: { eq: $id }) {
+  query ProfilePage {
+    imageSharp(id: { eq: "20d663d7-151a-5c75-a853-00efe6137484" }) {
       id
-      gatsbyImageData
+      gatsbyImageData(width: 170, height: 170)
     }
   }
 `
 
-/* 
-export const query = graphql`
-  query ProfilePage($id: String) {
-    imageSharp(id: { eq: $id }) {
-      id
-      gatsbyImageData
-    }
-  }
-` */
-
 export const Head = () => (
   <SEO
-    title={"PlaceholderProfile"}
+    title={profileName}
     description={""}
     pathname={""}
     children={undefined}
