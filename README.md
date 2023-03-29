@@ -14,7 +14,7 @@ This is a simple web app to get data from the [Steam API](https://steamcommunity
 ## Installation
 1. Clone the repo to your local environment
 2. `npm install`
-3. `npm run develop` to build.
+3. Depending on your enviroment `npm run develop` or `npm start` to build.
 4. Navigate to `http://localhost:8000`
 
 ## Steam API Call Format

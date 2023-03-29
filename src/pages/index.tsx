@@ -6,7 +6,6 @@ import { SEO } from "../components/seo"
 const HomePage = () => {
   return (
     <Layout pageTitle="Steam Reaction">
-      <Searchbar />
     </Layout>
   )
 }

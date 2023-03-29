@@ -7,7 +7,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const BlogPostPage = ({
   data,
-  children}: PageProps<Queries.BlogPostPageQuery>) => {
+  children,
+}: PageProps<Queries.BlogPostPageQuery>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero_image)!
   return (
     <Layout pageTitle={String(data.mdx?.frontmatter?.title)}>

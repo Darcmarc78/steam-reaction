@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Steam Reaction`,
     siteUrl: `http://localhost:8000`,
-    twitterUsername: `@TheRock`,
+    twitterUsername: `@NOTAREALUSER`,
     image: `/gatsby-icon-root.png`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -26,14 +26,16 @@ const config: GatsbyConfig = {
       "path": `${__dirname}/src/images`
     },
     __key: "images"
-    }, {
+    }, 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "pages",
         "path": `${__dirname}/src/pages`
       },
       __key: "pages"
-    }, {
+    }, 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "blog",
