@@ -14,13 +14,13 @@ const ProfilePage = ({
     <Layout pageTitle="Steam Profile">
       <div className="flex flex-row items-center">
         <GatsbyImage image={profileImage} alt={"Placeholder Profile Picture"} />
-        {/* <StaticImage
+        <StaticImage
           src="../../images/janko-ferlic-sfL_QOnmy00-unsplash.jpg"
           alt="stock image of library"
           placeholder="blurred"
           width={170}
           height={170}
-        /> */}
+        />
         {/* Profile Name: 
           Desktop Viewport: <h2/>, right of Profile Picture
           Mobile Viewport: <h2/>, Centered under profilepicture
