@@ -1,7 +1,10 @@
-const http = require("http");
+const axios = require('axios')
+
+
 // Get User Id parameter passed from "Searchbar"
-http.get('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' + STEAM_API_KEY)
+axios.get(env.G,)
 // Call GetPlayerSummaries Steam API Method using .env variable and User_id parameter
+
 // Return results as JSON
 
 // Parse returned JSON object into avatar and personaname
