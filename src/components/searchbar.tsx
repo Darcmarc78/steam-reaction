@@ -1,7 +1,11 @@
-import { Link } from "gatsby"
 import * as React from "react"
+import {getSteamUser} from "../../api/get-steam-user"
 
 //
+function getPlayerSummary() {
+  console.log('PlayerSum')
+  return getSteamUser;
+}
 
 const Searchbar = () => {
   return (
@@ -17,7 +21,7 @@ const Searchbar = () => {
       <div>
         <button
           className="h-4/6 justify-center rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-          formAction=""
+          onClick={getPlayerSummary}
         >
           Search
         </button>
