@@ -4,6 +4,7 @@ import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import { PageProps } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
+import getSteamUser from "../../../api/get-steam-user"
 
 const profileName = "Placeholder Profile"
 
@@ -12,6 +13,9 @@ const ProfilePage = ({
   children,
 }: PageProps<Queries.ProfilePageQuery>) => {
   const profileImage = getImage(data.file)!
+  // Call get-steam-user with user supplied steamId
+  let playerSummary = getSteamUser('76561198161853165');
+  // Parse returned JSON Object
   return (
     <Layout pageTitle={profileName}>
       <div className="flex flex-row items-center">

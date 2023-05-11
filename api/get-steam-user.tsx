@@ -1,26 +1,25 @@
 const axios = require('axios')
 
-// Get User Id parameter passed from "Searchbar"
-export const getSteamUser = () => {
-    axios.get(
-    'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=A637C2E3E241F1A208A36786121B6157&steamid=76561198161853165&format=json'
-    )
-    .then(function (response:JSON) {
+// Get User Id parameter passed from "Searchbar" as JSON
+export const getSteamUser = (steamId: String) => {
+    let getPlayerSummary: String = 
+        process.env.GATSBY_URL_GET_PLAYER_SUMMARIES
+        + process.env.STEAM_API_KEY 
+        + '&steamids=' 
+        + steamId 
+        + '&format=json'
+    
+        // Call GetPlayerSummaries Steam API Method using .env variable and User_id parameter
+    axios.get(getPlayerSummary)
+    .then((response:JSON) => {
         // handle success
-        console.log(response);
+        console.log(response)
+        return response
     })
-    .catch(function (error) {
+    .catch((error:String) => {
         // handle error
-        console.log(error);
-    })
-    .finally(function () {
-        // always executed
+        console.log(error)
     });
 }
-// Call GetPlayerSummaries Steam API Method using .env variable and User_id parameter
 
-// Return results as JSON
-
-// Parse returned JSON object into avatar and personaname
-
-// Display avatar and personaname
+export default getSteamUser

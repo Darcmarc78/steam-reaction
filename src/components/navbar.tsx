@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav className="">
         <ul className="flex flex-row">
           <li className="">
-            <Link to="/" className=" px-64 text-3xl ">
+            <Link to="/" className=" px-48 text-3xl ">
               Steam Reaction
             </Link>
           </li>

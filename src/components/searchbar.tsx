@@ -3,8 +3,8 @@ import {getSteamUser} from "../../api/get-steam-user"
 
 //
 function getPlayerSummary() {
-  console.log('PlayerSum')
-  return getSteamUser;
+  console.log('Get Player summary from steamapi')
+  // return getSteamUser();
 }
 
 const Searchbar = () => {
