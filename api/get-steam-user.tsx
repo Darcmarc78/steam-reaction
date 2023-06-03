@@ -2,17 +2,12 @@ const axios = require('axios')
 
 // Get User Id parameter passed from "Searchbar" as JSON
 export const getSteamUser = (steamId: String) => {
-    let getPlayerSummary: String = 
-        process.env.GATSBY_URL_GET_PLAYER_SUMMARIES
-        + process.env.STEAM_API_KEY 
-        + '&steamids=' 
-        + steamId 
-        + '&format=json'
     
         // Call GetPlayerSummaries Steam API Method using .env variable and User_id parameter
-    axios.get(getPlayerSummary)
+    axios.get("http://localhost:3000/forward-to-steam-api")
     .then((response:JSON) => {
         // handle success
+        console.log("Call to back end")
         console.log(response)
         return response
     })
