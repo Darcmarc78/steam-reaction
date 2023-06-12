@@ -1,27 +1,32 @@
 var express = require('express');
 var router = express.Router();
+const axios = require('axios')
 
-let getPlayerSummary = 
-        process.env.GATSBY_URL_GET_PLAYER_SUMMARIES
-        + process.env.STEAM_API_KEY 
-        + '&steamids=' 
-        +  // Robin walker's Steam
-        + '&format=json'
-    
+// Set process env vars
+require('dotenv').config()
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  console.log('Hitting get Users route')
-  axios.get("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=KEY HERE&steamids=&format=json")
+router.get('/', async function (req, res, next) {
+  // Get API Key from env
+  // Get steamids object from argument
+  let getPlayerSummaryWithAPIKey =
+    process.env.STEAM_GET_PLAYER_SUMMARIES
+    + process.env.STEAM_API_KEY
+    + '&steamids='
+    +  // Robin walker's Steam
+    + '&format=json'
+
+  console.log(getPlayerSummaryWithAPIKey)
+  /* await axios.get("")
     .then((response) => {
-        // handle success
-        console.log("Hit backend api")
-        return response
+      // handle success
+      console.log("Hit Third Party API successfully")
+      // console.log(JSON.stringify(response.data));
     })
     .catch((error) => {
-        // handle error
-        console.log(error)
-    });
+      // handle error
+      console.log(error)
+    }); */
   res.send('respond with a resource');
 });
 
