@@ -4,7 +4,11 @@ const axios = require('axios')
 export const getSteamUser = (steamId: String) => {
     
         // Call GetPlayerSummaries Steam API Method using .env variable and User_id parameter
-    axios.get("http://localhost:3000/forward-to-steam-api")
+    axios.get("http://localhost:3000/forward-to-steam-api", {
+        params: {
+            steamIDParam: steamId
+        }
+    })
     .then((response:JSON) => {
         // handle success
         console.log("Call to back end")

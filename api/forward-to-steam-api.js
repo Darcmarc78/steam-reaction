@@ -6,28 +6,27 @@ const axios = require('axios')
 require('dotenv').config()
 
 /* GET users listing. */
-router.get('/', async function (req, res, next) {
-  // Get API Key from env
-  // Get steamids object from argument
+router.get('/', async function (req, res) {
+  // Get steamids object from url Param
+  let steamID = req.query.steamIDParam
   let getPlayerSummaryWithAPIKey =
-    process.env.STEAM_GET_PLAYER_SUMMARIES
-    + process.env.STEAM_API_KEY
+  process.env.STEAM_GET_PLAYER_SUMMARIES
+    + process.env.STEAM_API_KEY // Get API Key from env
     + '&steamids='
-    +  // Robin walker's Steam
+    +  steamID
     + '&format=json'
 
-  console.log(getPlayerSummaryWithAPIKey)
-  /* await axios.get("")
+  axios.get(getPlayerSummaryWithAPIKey)
     .then((response) => {
       // handle success
       console.log("Hit Third Party API successfully")
-      // console.log(JSON.stringify(response.data));
+      res.send('Here is response data' + response.data )
     })
     .catch((error) => {
       // handle error
       console.log(error)
-    }); */
-  res.send('respond with a resource');
+      return
+    });
 });
 
 module.exports = router;
