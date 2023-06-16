@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios')
+var cors = require('cors')
+var corsOptions = {
+  origin: 'http://localhost:8000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 
 // Set process env vars
 require('dotenv').config()
 
 /* GET users listing. */
-router.get('/', async function (req, res) {
+router.get('/', cors(corsOptions) , async function (req, res) {
   // Get steamids object from url Param
   let steamID = req.query.steamIDParam
   let getPlayerSummaryWithAPIKey =
@@ -19,8 +25,7 @@ router.get('/', async function (req, res) {
   axios.get(getPlayerSummaryWithAPIKey)
     .then((response) => {
       // handle success
-      console.log("Hit Third Party API successfully")
-      res.send('Here is response data' + response.data )
+      res.send(response.data)
     })
     .catch((error) => {
       // handle error

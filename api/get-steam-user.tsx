@@ -11,8 +11,6 @@ export const getSteamUser = (steamId: String) => {
     })
     .then((response:JSON) => {
         // handle success
-        console.log("Call to back end")
-        console.log(response)
         return response
     })
     .catch((error:String) => {
