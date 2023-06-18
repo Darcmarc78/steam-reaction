@@ -10,9 +10,9 @@ const profileName = "Placeholder Profile"
 
 const ProfilePage = () => {
   // Call get-steam-user with user supplied steamId
-  let playerSummary = getSteamUser('76561198161853165')
-  console.log('Returned object: ' + playerSummary)
-  // Parse returned JSON Object
+  let playerSummary:JSON = getSteamUser('76561198161853165')
+  console.log('Player Summary: ')
+  console.log(playerSummary)
   return (
     <Layout pageTitle={profileName}>
       <div className="flex flex-row items-center">
