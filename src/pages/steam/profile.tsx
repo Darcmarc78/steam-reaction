@@ -4,30 +4,19 @@ import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import { PageProps } from "gatsby"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
+import getSteamUser from "../../../api/get-steam-user"
 
-const ProfilePage = ({
-  data,
-  children,
-}: PageProps<Queries.ProfilePageQuery>) => {
-  const profileImage = getImage(data.imageSharp?.gatsbyImageData)!
+const profileName = "Placeholder Profile"
+
+const ProfilePage = () => {
+  // Call get-steam-user with user supplied steamId
+  let playerSummary:JSON = getSteamUser('76561198161853165')
+  console.log('Player Summary: ')
+  console.log(playerSummary)
   return (
-    <Layout pageTitle="Steam Profile">
+    <Layout pageTitle={profileName}>
       <div className="flex flex-row items-center">
-        <GatsbyImage image={profileImage} alt={"Placeholder Profile Picture"} />
-        {/* <StaticImage
-          src="../../images/janko-ferlic-sfL_QOnmy00-unsplash.jpg"
-          alt="stock image of library"
-          placeholder="blurred"
-          width={170}
-          height={170}
-        /> */}
-        {/* Profile Name: 
-          Desktop Viewport: <h2/>, right of Profile Picture
-          Mobile Viewport: <h2/>, Centered under profilepicture
-        */}
-        <h1 className="flex flex-1 justify-center text-2xl">
-          Placeholder Profile
-        </h1>
+        <h1 className="flex flex-1 justify-center text-2xl">{profileName}</h1>
       </div>
 
       {/* Steam Library Component:
@@ -35,7 +24,6 @@ const ProfilePage = ({
         Width: Viewport span
         < Individual Steam Game> Component
       */}
-
       <hr className="py-4" />
       <p className="flex flex-1 justify-center py-4 text-3xl">
         [STEAM LIBRARY COMPONENT]
@@ -47,32 +35,12 @@ const ProfilePage = ({
     </Layout>
   )
 }
+
 export default ProfilePage
-
-// = "20d663d7-151a-5c75-a853-00efe6137484"
-
-export const query = graphql`
-  query ProfilePage($id: String) {
-    imageSharp(id: { eq: $id }) {
-      id
-      gatsbyImageData
-    }
-  }
-`
-
-/* 
-export const query = graphql`
-  query ProfilePage($id: String) {
-    imageSharp(id: { eq: $id }) {
-      id
-      gatsbyImageData
-    }
-  }
-` */
 
 export const Head = () => (
   <SEO
-    title={"PlaceholderProfile"}
+    title={profileName}
     description={""}
     pathname={""}
     children={undefined}
