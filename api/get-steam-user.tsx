@@ -9,7 +9,8 @@ export const getSteamUser = (steamId: String): JSON => {
     })
     .then((res: JSON) => {
       // handle success
-      return res.data.response.players[0]
+      // Set "Player" state? with data from response?
+      return res.data.response.players[0] // why is this not returning to profile.tsx?
     })
     .catch((error: String) => {
       // handle error
