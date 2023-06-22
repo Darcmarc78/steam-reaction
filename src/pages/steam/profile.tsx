@@ -2,17 +2,19 @@ import { Link, graphql } from "gatsby"
 import * as React from "react"
 import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
-import { PageProps } from "gatsby"
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
-import getSteamUser from "../../../api/get-steam-user"
+import { getSteamUser } from "../../../api/get-steam-user"
 
 const profileName = "Placeholder Profile"
 
 const ProfilePage = () => {
   // Call get-steam-user with user supplied steamId
-  let playerSummary:JSON = getSteamUser('76561198161853165')
-  console.log('Player Summary: ')
+  const a = async () => {
+    const playerSummary = await getSteamUser("76561198161853165");
+  }
+  a();
+  console.log("Player Summary: ")
   console.log(playerSummary)
+
   return (
     <Layout pageTitle={profileName}>
       <div className="flex flex-row items-center">
