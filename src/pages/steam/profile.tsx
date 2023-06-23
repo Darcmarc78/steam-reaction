@@ -2,38 +2,16 @@ import { Link, graphql } from "gatsby"
 import * as React from "react"
 import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
-import { getSteamUser } from "../../../api/get-steam-user"
+import PlayerSummary from "../../components/playersummary"
 
 const profileName = "Placeholder Profile"
+const searchedID = "76561198161853165"
 
 const ProfilePage = () => {
-  // Call get-steam-user with user supplied steamId
-  const a = async () => {
-    const playerSummary = await getSteamUser("76561198161853165");
-  }
-  a();
-  console.log("Player Summary: ")
-  console.log(playerSummary)
-
   return (
     <Layout pageTitle={profileName}>
-      <div className="flex flex-row items-center">
-        <h1 className="flex flex-1 justify-center text-2xl">{profileName}</h1>
-      </div>
-
-      {/* Steam Library Component:
-        Horizontal Rule at top
-        Width: Viewport span
-        < Individual Steam Game> Component
-      */}
-      <hr className="py-4" />
-      <p className="flex flex-1 justify-center py-4 text-3xl">
-        [STEAM LIBRARY COMPONENT]
-      </p>
-
-      <Link to="/">
-        <p>Back to Home</p>
-      </Link>
+      {/* PlayerSummary Component */}
+      <PlayerSummary steamId={searchedID} children={undefined} />
     </Layout>
   )
 }
