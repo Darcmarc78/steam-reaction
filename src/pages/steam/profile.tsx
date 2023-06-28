@@ -8,10 +8,14 @@ const profileName = "Placeholder Profile"
 const searchedID = "76561198161853165"
 
 const ProfilePage = () => {
+  const playerValue = 
   return (
     <Layout pageTitle={profileName}>
       {/* PlayerSummary Component */}
-      <PlayerSummary steamId={searchedID} children={undefined} />
+      <PlayerSummary
+        steamId={searchedID}
+        children={undefined}
+      />
     </Layout>
   )
 }

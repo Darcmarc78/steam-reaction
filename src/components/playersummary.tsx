@@ -4,15 +4,17 @@ import { Link } from "gatsby"
 
 type PlayerSummaryProps = {
   steamId : String
+  personaName: String
+  playerSummary: Object
   children: React.ReactNode
 }
 
 
-export const PlayerSummary = ({steamId, children}:PlayerSummaryProps) => {
+export const PlayerSummary = ({steamId, playerSummary, personaName, children}:PlayerSummaryProps) => {
   // Call get-steam-user with user supplied steamId
-  const test = getSteamUser(steamId)
+  const test = getSteamUser(steamId, playerSummary)
   console.log("Player Summary: ")
-  const personaName = ''
+  console.log(test)
   return (
     <div>
       <div className="flex flex-row items-center">
