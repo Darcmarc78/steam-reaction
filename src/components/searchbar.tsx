@@ -14,7 +14,7 @@ const Searchbar = () => {
         <input
           className="h-4/6 w-auto rounded-md border-slate-300 bg-black placeholder-white"
           type="text"
-          placeholder="Enter Steam username or game name"
+          placeholder="Enter Steam Id"
           formAction="POST"
         />
       </div>
