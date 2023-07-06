@@ -7,16 +7,16 @@ const Navbar = () => {
       <nav className="">
         <ul className="flex flex-row">
           <li className="">
-            <Link to="/" className=" px-8 text-3xl ">
+            <Link to="/" className=" px-48 text-3xl ">
               Steam Reaction
             </Link>
           </li>
           <div className="flex flex-row items-center">
-            <li className="px-4">
+            {/* <li className="px-4">
               <Link to="/about" className="">
                 About
               </Link>
-            </li>
+            </li> */}
             <li className="px-4">
               <Link to="/library" className="">
                 Library
@@ -28,8 +28,11 @@ const Navbar = () => {
               </Link>
             </li>
             {/* Most likely custom login component*/}
-            <li className="inset-y-0 right-0 px-4 ">
-              <a>Login/Logout</a>
+            {/* Place holder steam profile link */}
+            <li className="px-4">
+              <Link to="/steam/profile" className="">
+                Steam Profile
+              </Link>
             </li>
           </div>
         </ul>
