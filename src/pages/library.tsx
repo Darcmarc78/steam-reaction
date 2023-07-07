@@ -1,13 +1,18 @@
-import * as React from 'react'
-import Layout from '../components/layout'
-import { StaticImage } from 'gatsby-plugin-image'
+import * as React from "react"
+import Layout from "../components/layout"
+import { StaticImage } from "gatsby-plugin-image"
 
 const LibraryPage = () => {
   return (
     <div>
-      <Layout pageTitle='Your Library' >
-        <p>H E R E L I E S T H E L I B R A R Y </p>
-        <StaticImage src='../images/library-image.png' alt='stock image of library'/>
+      <Layout pageTitle="Your Library">
+        <div className="container flex ">
+          <p>H E R E L I E S T H E L I B R A R Y </p>
+          <StaticImage
+            src="../images/library-image.png"
+            alt="stock image of library"
+          />
+        </div>
       </Layout>
     </div>
   )

@@ -1,49 +1,25 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
-import {
-  container,
-  navLinks,
-  heading,
-  navLinkItem,
-  navLinkText
-} from '../styles/layout.module.css'
+import * as React from "react"
+import { Link } from "gatsby"
+import Navbar from "./navbar"
+import Searchbar from "./searchbar"
 
 type LayoutProps = {
-  pageTitle: string,
-  children: React.ReactNode 
+  pageTitle: string
+  children: React.ReactNode
 }
 
 const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
-    <div className={container}>
-      {/* @darcmarc78 - Should include custom Navbar here eventually */}
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/library" className={navLinkText}>
-              Library
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/discussion" className={navLinkText}>
-              Discussion
-            </Link>
-          </li>
-        </ul>
-      </nav>
+    <div>
+      <div className="container mx-auto flex basis-full justify-center pb-4">
+        <Navbar />
+        <Searchbar />
+      </div>
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
+        <div className="container mx-auto flex flex-col justify-center">
+          <h1 className="text-3xl font-bold underline pb-8">{pageTitle}</h1>
+          {children}
+        </div>
       </main>
     </div>
   )

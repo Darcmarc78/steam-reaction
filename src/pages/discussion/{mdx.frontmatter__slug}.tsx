@@ -1,25 +1,28 @@
-import { Link, graphql } from 'gatsby'
-import * as React from 'react'
-import Layout from '../../components/layout'
-import {SEO} from '../../components/seo'
-import { PageProps } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { Link, graphql } from "gatsby"
+import * as React from "react"
+import Layout from "../../components/layout"
+import { SEO } from "../../components/seo"
+import { PageProps } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const BlogPostPage = ({data, children}: PageProps<Queries.BlogPostPageQuery>) => {
+const BlogPostPage = ({
+  data,
+  children,
+}: PageProps<Queries.BlogPostPageQuery>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero_image)!
   return (
     <Layout pageTitle={String(data.mdx?.frontmatter?.title)}>
       <p>Posted: {data.mdx?.frontmatter?.date}</p>
       <GatsbyImage
         image={heroImage}
-        alt={String(data.mdx?.frontmatter?.hero_image_alt)} 
+        alt={String(data.mdx?.frontmatter?.hero_image_alt)}
       />
       <p>
-        Photo Credit: {" "}
+        Photo Credit:{" "}
         <a href={String(data.mdx?.frontmatter?.hero_image_credit_link)}>
           {data.mdx?.frontmatter?.hero_image_credit_text}
         </a>
-      </p>      
+      </p>
       {children}
       <Link to="/discussion">
         <p>Back</p>
@@ -32,7 +35,7 @@ export default BlogPostPage
 
 export const query = graphql`
   query BlogPostPage($id: String) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
         date(formatString: "MMMM D, YYYY")
@@ -49,4 +52,11 @@ export const query = graphql`
   }
 `
 
-export const Head = ({data} : PageProps<Queries.BlogPostPageQuery>) => <SEO title={String(data.mdx?.frontmatter?.title)} description={''} pathname={''} children={undefined} />
+export const Head = ({ data }: PageProps<Queries.BlogPostPageQuery>) => (
+  <SEO
+    title={String(data.mdx?.frontmatter?.title)}
+    description={""}
+    pathname={""}
+    children={undefined}
+  />
+)

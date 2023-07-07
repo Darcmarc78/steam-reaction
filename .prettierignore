@@ -1,3 +1,7 @@
+# Ignore artifacts:
+build
+coverage
+
 node_modules/
 .cache/
 public
@@ -74,7 +78,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env*
+.env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -109,5 +113,8 @@ public/static
 
 # TernJS port file
 .tern-port
+package-lock.json
 src/gatsby-types.d.ts
 src/styles/layout.module.css.d.ts
+
+tsconfig.json

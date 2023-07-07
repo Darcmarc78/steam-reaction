@@ -1,10 +1,14 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Steam Reaction`,
     siteUrl: `http://localhost:8000`,
-    twitterUsername: `@TheRock`,
+    twitterUsername: `@NOTAREALUSER`,
     image: `/gatsby-icon-root.png`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -16,6 +20,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-postcss",
     "gatsby-plugin-dts-css-modules",
     "gatsby-transformer-sharp",
     {
@@ -25,14 +30,16 @@ const config: GatsbyConfig = {
       "path": `${__dirname}/src/images`
     },
     __key: "images"
-    }, {
+    }, 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "pages",
         "path": `${__dirname}/src/pages`
       },
       __key: "pages"
-    }, {
+    }, 
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "blog",
