@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 
-const LibraryPage = () => {
+const YourLibraryPage = () => {
   return (
     <div>
       <Layout pageTitle="Your Library">
@@ -20,4 +20,4 @@ const LibraryPage = () => {
 
 export const Head = () => <title>Your Library</title>
 
-export default LibraryPage
+export default YourLibraryPage

@@ -3,6 +3,7 @@ import * as React from "react"
 import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
+import { RecentLibrary } from "../../components/recent-library"
 const axios = require("axios")
 
 const profileName = "Search Result"
@@ -40,10 +41,9 @@ const ProfilePage = () => {
             Width: Viewport span
             < Individual Steam Game> Component
             */}
-      <hr className="py-4" />
-      <p className="flex flex-1 justify-center py-4 text-3xl">
-        [STEAM LIBRARY COMPONENT]
-      </p>
+      <hr className="py-4 " />
+      <div className="flex-grow border-t-2 border-black " />
+      <RecentLibrary />
       <Link to="/">
         <p>Back to Home</p>
       </Link>

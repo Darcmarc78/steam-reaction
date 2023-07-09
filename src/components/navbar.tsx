@@ -18,8 +18,8 @@ const Navbar = () => {
               </Link>
             </li> */}
             <li className="px-4">
-              <Link to="/library" className="">
-                Library
+              <Link to="/your-library" className="">
+                Your Library
               </Link>
             </li>
             <li className="px-4">
