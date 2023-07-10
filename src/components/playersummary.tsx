@@ -11,7 +11,6 @@ export const ProfileName = ({
   imageURL,
   children,
 }: ProfileNameProps) => {
-  console.log(imageURL)
   return (
     <div>
       <div className="flex flex-row items-center">
