@@ -8,27 +8,35 @@ const axios = require("axios")
 
 const profileName = "Search Result"
 const steamId = "76561198161853165"
+const steamID2 = "76561197960434622"
 
 const ProfilePage = () => {
   const [playerSummary, setPlayerSummary] = React.useState({})
+  // const [recentlyPlayed, setRecentlyPlayed] = React.useState({})
+  const getPlayerSummary = axios.get("http://localhost:3000/get-player-summary", {
+    params: {
+      steamIDParam: steamId,
+    },
+  })
+  const getRecentlyPlayed = axios.get("http://localhost:3000/get-recently-played-games", {
+    params: {
+      steamIDParam: steamId,
+    },
+  })
   // Call get-steam-user with user supplied steamId
   React.useEffect(() => {
-    axios
-      .get("http://localhost:3000/forward-to-steam-api", {
-        params: {
-          steamIDParam: steamId,
-        },
-      })
-      .then((res: JSON) => {
-        // handle success
-        setPlayerSummary(res.data.response.players[0])
-      })
-      .catch((error: String) => {
-        // handle error
-        console.log("Error: " + error)
-      })
+    axios.all([getPlayerSummary/* ,getRecentlyPlayed */])
+    .then((res: JSON) => {
+      // handle success
+      console.log(res)
+      // setPlayerSummary(res[0].data.response.players[0])
+    })
+    .catch((error: String) => {
+      // handle error
+      console.log("Error: " + error)
+    })
   }, [])
-  return (
+      return (
     <Layout pageTitle={profileName}>
       {/* PlayerSummary Component */}
       <PlayerSummary

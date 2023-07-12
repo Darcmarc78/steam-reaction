@@ -7,7 +7,6 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-
 // Set process env vars
 require('dotenv').config()
 
@@ -15,16 +14,17 @@ require('dotenv').config()
 router.get('/', cors(corsOptions) , async function (req, res) {
   // Get steamids object from url Param
   let steamID = req.query.steamIDParam
-  let getPlayerSummaryWithAPIKey =
-  process.env.STEAM_GET_PLAYER_SUMMARIES
+  let getRecentlyPlayedGames =
+  process.env.GET_RECENTLY_PLAYED_GAMES
     + process.env.STEAM_API_KEY // Get API Key from env
-    + '&steamids='
+    + '&steamid='
     +  steamID
     + '&format=json'
-
-  axios.get(getPlayerSummaryWithAPIKey)
+    console.log(getRecentlyPlayedGames)
+  axios.get(getRecentlyPlayedGames)
     .then((response) => {
       // handle success
+      console.log(response)
       res.send(response.data)
     })
     .catch((error) => {
