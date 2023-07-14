@@ -13,19 +13,19 @@ const steamID2 = "76561197960434622"
 const ProfilePage = () => {
   const [playerSummary, setPlayerSummary] = React.useState({})
   // const [recentlyPlayed, setRecentlyPlayed] = React.useState({})
-  const getPlayerSummary = axios.get("http://localhost:3000/get-player-summary", {
+  const getPlayerSummary = axios.get("http://localhost:3000/steam-api/get-player-summary", {
     params: {
       steamIDParam: steamId,
     },
   })
-  const getRecentlyPlayed = axios.get("http://localhost:3000/get-recently-played-games", {
+  const getRecentlyPlayed = axios.get("http://localhost:3000/steam-api/get-recently-played-games", {
     params: {
       steamIDParam: steamId,
     },
   })
   // Call get-steam-user with user supplied steamId
   React.useEffect(() => {
-    axios.all([getPlayerSummary/* ,getRecentlyPlayed */])
+    axios.all([/* getPlayerSummary, */getRecentlyPlayed])
     .then((res: JSON) => {
       // handle success
       console.log(res)

@@ -4,9 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./api/get-player-summary');
-var recentGamesRouter = require('./api/get-recently-played-games');
+var steamRouter = require('./api/steam-api');
 
 var app = express();
 
@@ -16,9 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/get-player-summary', usersRouter);
-app.use('/get-recently-played', recentGamesRouter);
+app.use('/steam-api', steamRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
