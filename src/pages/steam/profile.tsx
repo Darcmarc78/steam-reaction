@@ -12,7 +12,7 @@ const steamID2 = "76561197960434622"
 
 const ProfilePage = () => {
   const [playerSummary, setPlayerSummary] = React.useState({})
-  // const [recentlyPlayed, setRecentlyPlayed] = React.useState({})
+  const [recentlyPlayed, setRecentlyPlayed] = React.useState({})
   const getPlayerSummary = axios.get("http://localhost:3000/steam-api/get-player-summary", {
     params: {
       steamIDParam: steamId,
@@ -25,11 +25,13 @@ const ProfilePage = () => {
   })
   // Call get-steam-user with user supplied steamId
   React.useEffect(() => {
-    axios.all([/* getPlayerSummary, */getRecentlyPlayed])
+    axios.all([getPlayerSummary,getRecentlyPlayed])
     .then((res: JSON) => {
       // handle success
-      console.log(res)
-      // setPlayerSummary(res[0].data.response.players[0])
+      setPlayerSummary(res[0].data.response.players[0])
+      setRecentlyPlayed(res[1].data.response.games)
+    /*   console.log("Games Array")
+      console.log(res[1].data.response.games) */
     })
     .catch((error: String) => {
       // handle error
@@ -51,7 +53,9 @@ const ProfilePage = () => {
             */}
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black " />
-      <RecentLibrary />
+      <RecentLibrary 
+        gamesArray={recentlyPlayed}
+        />
       <Link to="/">
         <p>Back to Home</p>
       </Link>
