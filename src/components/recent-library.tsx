@@ -1,30 +1,32 @@
 import React from "react"
 
-export const RecentLibrary = (recentlyPlayedLibraryProp: Array<Object>) => {
-  // console.log(recentlyPlayedLibrary.gamesArray[0])
-  const recentLibrary = recentlyPlayedLibraryProp.gamesArray
-  console.log("recentLibrary")
-  console.log(recentLibrary)
-  // const recentLibrary: Array<Object> = Array.from(arrayProp.gamesArray)
-  /* recentLibrary.forEach((x) => {
-    console.log(x)
-  }) */
+type RecentLibraryProps = {
+  recentlyPlayedLibrary: Array<Object>
+  children: React.ReactNode
+}
+
+export const RecentLibrary = ({
+  recentlyPlayedLibrary,
+  children,
+}: RecentLibraryProps) => {
+  
+  for (var i = 0; i < recentlyPlayedLibrary.length; i++) {
+    console.log(recentlyPlayedLibrary[i].name)
+  }
   return (
     <div>
-    <ul className="">
+      <div className="grid grid-cols-5 flex-row items-center gap-4">
         {/* for each item in api resopnse game array */}
         {/* {console.log(gamesArray[0].name)} */}
-        {recentLibrary.forEach(x => {
-          <li>{x.name} </li>
-        })}
         {/* Display Game Hero Image component */}
-        {/* <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
+        {/* <div className="flex flex-1 justify-center py-4 text-3xl">{recentLibrary[0].name}</div> */}
         <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
         <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
         <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
         <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div> */}
-      </ul>
+        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
+        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
+      </div>
     </div>
   )
 }

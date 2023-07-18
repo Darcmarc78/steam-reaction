@@ -30,8 +30,6 @@ const ProfilePage = () => {
       // handle success
       setPlayerSummary(res[0].data.response.players[0])
       setRecentlyPlayed(res[1].data.response.games)
-    /*   console.log("Games Array")
-      console.log(res[1].data.response.games) */
     })
     .catch((error: String) => {
       // handle error
@@ -54,7 +52,8 @@ const ProfilePage = () => {
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black " />
       <RecentLibrary 
-        gamesArray={recentlyPlayed}
+        recentlyPlayedLibrary={recentlyPlayed}
+        children={undefined}
         />
       <Link to="/">
         <p>Back to Home</p>
