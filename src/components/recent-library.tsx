@@ -1,4 +1,5 @@
 import React from "react"
+import HeroCapsule from "../components/hero-capsule"
 
 type RecentLibraryProps = {
   recentlyPlayedLibrary: Array<Object>
@@ -15,9 +16,13 @@ export const RecentLibrary = ({
         {/* for each item in api resopnse game array */}
         {/* Display Game Hero Image component */}
         {/* <div className="flex flex-1 justify-center py-4 text-3xl">{recentLibrary[0].name}</div> */}
-          {recentlyPlayedLibrary.map((game: Object) => (
-            <div className="flex flex-1 justify-center py-4 text-3xl" >{game.name}</div>
-          ))}
+        {recentlyPlayedLibrary.map((game: Object) => (
+          <HeroCapsule
+            name={game.name}
+            key={game.appid}
+            children={undefined}
+          />
+        ))}
       </div>
     </div>
   )
