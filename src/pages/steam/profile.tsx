@@ -12,7 +12,7 @@ const steamID2 = "76561197960434622"
 
 const ProfilePage = () => {
   const [playerSummary, setPlayerSummary] = React.useState({})
-  const [recentlyPlayed, setRecentlyPlayed] = React.useState({})
+  const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
   const getPlayerSummary = axios.get("http://localhost:3000/steam-api/get-player-summary", {
     params: {
       steamIDParam: steamId,

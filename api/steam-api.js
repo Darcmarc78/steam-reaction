@@ -20,7 +20,6 @@ router.get('/get-player-summary', cors(corsOptions), async function (req, res) {
     + '&steamids='
     + steamID
     + '&format=json'
-  console.log("Still called for some reason")
   axios.get(getPlayerSummaryWithAPIKey)
     .then((response) => {
       // handle success
