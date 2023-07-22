@@ -1,21 +1,28 @@
-import React from "react";
+import React from "react"
 
 type HeroCapsuleProps = {
-  name: string;
-  appID: string;
-  children: React.ReactNode;
-};
+  name: string
+  appID: string
+  libraryCapsuleURL: string
+  children: React.ReactNode
+}
 
 export const HeroCapsule = ({
   name,
   appID,
+  libraryCapsuleURL,
   children,
 }: HeroCapsuleProps) => {
+  const imageURL = libraryCapsuleURL + appID + "/hero_capsule.jpg"
   return (
     <div>
-      <div className="flex flex-1 justify-center py-4 text-3xl">{name}</div>
+      {/* If image does not successfully render */}
+      <div>
+        <img src={imageURL} alt={name} />
+      </div>
+      <div className="flex flex-1 justify-center py-4">{name}</div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroCapsule;
+export default HeroCapsule
