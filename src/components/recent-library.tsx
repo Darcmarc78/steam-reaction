@@ -10,9 +10,11 @@ export const RecentLibrary = ({
   recentlyPlayedLibrary,
   children,
 }: RecentLibraryProps) => {
-  const steamContentServer = "https://cdn.cloudflare.steamstatic.com/steam/apps/"
+  const steamContentServer =
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/"
   return (
     <div>
+      <h1 className="pb-8 text-2xl font-bold underline">Recent Library</h1>
       <div className="grid grid-cols-5 flex-row items-center gap-4">
         {/* for each item in api resopnse game array */}
         {/* Display Game Hero Image component */}
