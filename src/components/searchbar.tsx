@@ -1,11 +1,4 @@
 import * as React from "react"
-import {getSteamUser} from "../../api/get-steam-user"
-
-//
-function getPlayerSummary() {
-  console.log('Get Player summary from steamapi')
-  // return getSteamUser();
-}
 
 const Searchbar = () => {
   return (
@@ -21,7 +14,6 @@ const Searchbar = () => {
       <div>
         <button
           className="h-4/6 justify-center rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-          onClick={getPlayerSummary}
         >
           Search
         </button>

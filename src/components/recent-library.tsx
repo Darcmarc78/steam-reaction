@@ -1,30 +1,33 @@
 import React from "react"
+import HeroCapsule from "../components/hero-capsule"
 
-export const RecentLibrary = (recentlyPlayedLibraryProp: Array<Object>) => {
-  // console.log(recentlyPlayedLibrary.gamesArray[0])
-  const recentLibrary = recentlyPlayedLibraryProp.gamesArray
-  console.log("recentLibrary")
-  console.log(recentLibrary)
-  // const recentLibrary: Array<Object> = Array.from(arrayProp.gamesArray)
-  /* recentLibrary.forEach((x) => {
-    console.log(x)
-  }) */
+type RecentLibraryProps = {
+  recentlyPlayedLibrary: Array<Object>
+  children: React.ReactNode
+}
+
+export const RecentLibrary = ({
+  recentlyPlayedLibrary,
+  children,
+}: RecentLibraryProps) => {
+  const steamContentServer =
+    "https://cdn.cloudflare.steamstatic.com/steam/apps/"
   return (
     <div>
-    <ul className="">
+      <h1 className="pb-8 text-2xl font-bold underline">Recent Library</h1>
+      <div className="grid grid-cols-5 flex-row items-center gap-4">
         {/* for each item in api resopnse game array */}
-        {/* {console.log(gamesArray[0].name)} */}
-        {recentLibrary.forEach(x => {
-          <li>{x.name} </li>
-        })}
         {/* Display Game Hero Image component */}
-        {/* <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div>
-        <div className="flex flex-1 justify-center py-4 text-3xl">Game</div> */}
-      </ul>
+        {/* <div className="flex flex-1 justify-center py-4 text-3xl">{recentLibrary[0].name}</div> */}
+        {recentlyPlayedLibrary.map((game: Object) => (
+          <HeroCapsule
+            name={game.name}
+            appID={game.appid}
+            libraryCapsuleURL={steamContentServer}
+            children={undefined}
+          />
+        ))}
+      </div>
     </div>
   )
 }
