@@ -54,4 +54,27 @@ router.get('/get-recently-played-games', cors(corsOptions) , async function (req
     });
 });
 
+/* GET Steam user's Friend's List */
+router.get('/get-friends-list', cors(corsOptions) , async function (req, res) {
+  // Get steamids object from url Param
+  let steamID = req.query.steamIDParam
+  let getFriendsList =
+  process.env.STEAM_GET_FRIENDS_LIST
+    + process.env.STEAM_API_KEY // Get API Key from env
+    + '&steamid='
+    +  steamID
+    + '&relationship=friend'
+  axios.get(getFriendsList)
+    .then((response) => {
+      // handle success
+      res.send(response.data)
+    })
+    .catch((error) => {
+      // handle error
+      console.log(error)
+      return
+    });
+});
+
+
 module.exports = router;
