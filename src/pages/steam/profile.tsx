@@ -45,17 +45,15 @@ const ProfilePage = () => {
   }, [])
   return (
     <Layout pageTitle={profileName}>
-      {/* PlayerSummary Component */}
       <PlayerSummary
         personaName={playerSummary.personaname}
         imageURL={playerSummary.avatarfull}
         children={undefined}
       />
-      {/* Steam Library Component:
-            Horizontal Rule at top
-            Width: Viewport span
-            < Individual Steam Game> Component
-            */}
+      <Link to="/friends-list"
+      state={{message: {steamId}}} >
+        <p>To Friends List</p>
+      </Link>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
       <RecentLibrary

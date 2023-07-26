@@ -1,18 +1,20 @@
 import React from "react"
-import Layout from "../components/layout"
 import { SEO } from "../components/seo"
 import axios from "axios"
+import Layout from "../components/layout"
 
 const pageTitle = "Friend's List"
 
+
 const FriendsListPage = () => {
   const [friendsList, setFriendsList] = React.useState([])
+  // Get SteamId from path param or search param
   // Call get-friends-list with user supplied steamId
   React.useEffect(() => {
     axios.get("http://localhost:3000/steam-api/get-friends-list",
     {
       params: {
-        steamIDParam: steamId,
+        steamIDParam: yourSteamId,
       },
     }
     )
@@ -26,13 +28,9 @@ const FriendsListPage = () => {
       })
   }, [])
   return (
-    <div>
-      <Layout pageTitle={pageTitle}>
-      {friendsList.map((game: Object) => (
-        console.log("friends")
-        ))}
-      </Layout>
-    </div>
+    <Layout pageTitle={pageTitle}>
+      <p>TEST</p>
+    </Layout>
   )
 }
 
