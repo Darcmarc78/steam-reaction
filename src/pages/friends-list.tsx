@@ -5,8 +5,7 @@ import Layout from "../components/layout"
 
 const pageTitle = "Friend's List"
 
-
-const FriendsListPage = () => {
+const FriendsListPage = (paramObject: Object) => {
   const [friendsList, setFriendsList] = React.useState([])
   // Get SteamId from path param or search param
   // Call get-friends-list with user supplied steamId
@@ -14,7 +13,7 @@ const FriendsListPage = () => {
     axios.get("http://localhost:3000/steam-api/get-friends-list",
     {
       params: {
-        steamIDParam: yourSteamId,
+        steamIDParam: paramObject.location.state.uniqueSteamId,
       },
     }
     )
@@ -29,7 +28,7 @@ const FriendsListPage = () => {
   }, [])
   return (
     <Layout pageTitle={pageTitle}>
-      <p>TEST</p>
+      <p>{}</p>
     </Layout>
   )
 }

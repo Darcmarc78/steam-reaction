@@ -11,13 +11,15 @@ const steamId = "76561198161853165"
 const steamID2 = "76561197960434622"
 
 const ProfilePage = () => {
+  const [yourSteamId, setyourSteamId] = React.useState("76561198161853165")
   const [playerSummary, setPlayerSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
+
   const getPlayerSummary = axios.get(
     "http://localhost:3000/steam-api/get-player-summary",
     {
       params: {
-        steamIDParam: steamId,
+        steamIDParam: yourSteamId,
       },
     }
   )
@@ -25,11 +27,11 @@ const ProfilePage = () => {
     "http://localhost:3000/steam-api/get-recently-played-games",
     {
       params: {
-        steamIDParam: steamId,
+        steamIDParam: yourSteamId,
       },
     }
   )
-  // Call get-steam-user with user supplied steamId
+  // Call get-steam-user with user supplied yourSteamId
   React.useEffect(() => {
     axios
       .all([getPlayerSummary, getRecentlyPlayed])
@@ -50,8 +52,8 @@ const ProfilePage = () => {
         imageURL={playerSummary.avatarfull}
         children={undefined}
       />
-      <Link to="/friends-list"
-      state={{message: {steamId}}} >
+      <Link to="/friends-list" state={{yourSteamId}}
+      >
         <p>To Friends List</p>
       </Link>
       <hr className="py-4 " />
