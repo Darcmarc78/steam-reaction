@@ -1,16 +1,16 @@
 import React from "react"
 
-type ProfileNameProps = {
+type PlayerSummaryProps = {
   personaName: string
   imageURL: string
   children: React.ReactNode
 }
 
-export const ProfileName = ({
+export const PlayerSummary = ({
   personaName,
   imageURL,
   children,
-}: ProfileNameProps) => {
+}: PlayerSummaryProps) => {
   return (
     <div>
       <div className="flex flex-row items-center">
@@ -23,4 +23,4 @@ export const ProfileName = ({
   )
 }
 
-export default ProfileName
+export default PlayerSummary
