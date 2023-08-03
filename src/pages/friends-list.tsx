@@ -39,15 +39,15 @@ const FriendsListPage = (paramObject: Object) => {
   }, [])
   return (
     <Layout pageTitle={pageTitle}>
-      <div className=" flex flex-row">
-        {friendsSummary.map((friend: Object) => (
+      {friendsSummary.map((friend: Object) => (
+        <div className=" flex flex-row py-1">
           <PlayerSummary
             personaName={friend.personaname}
             imageURL={friend.avatarfull}
             children={undefined}
           />
-        ))}
-      </div>
+        </div>
+      ))}
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const axios = require("axios")
 const profileName = "Search Result"
 
 const ProfilePage = () => {
-  const [yourSteamId, setyourSteamId] = React.useState("76561198161853165")
+  const yourSteamId = "76561198161853165"
   const [playerSummary, setPlayerSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
 
