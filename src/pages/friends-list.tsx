@@ -3,43 +3,21 @@ import { SEO } from "../components/seo"
 import axios from "axios"
 import Layout from "../components/layout"
 import PlayerSummary from "../components/playersummary"
+import getFriendsSummaries from "../hooks/get-all-friends-summaries"
 
 const pageTitle: string = "Friend's List"
 
 const FriendsListPage = (paramObject: Object) => {
   const [friendsSummary, setFriendsSummary] = React.useState([])
-
-  // Get SteamId from path param or search param
+  let resultArray: any[] = []
+  let steamId = paramObject.location.state.yourSteamId
   // Call get-friends-list with user supplied steamId
-  React.useEffect(() => {
-    axios
-      .get("http://localhost:3000/steam-api/get-friends-list", {
-        params: {
-          steamIDParam: paramObject.location.state.yourSteamId,
-        },
-      })
-      .then((res: any) => {
-        let friendsArray: Array<Object> = res.data.friendslist.friends
-        friendsArray.forEach((friend: Object) => {
-          axios
-            .get("http://localhost:3000/steam-api/get-player-summary", {
-              params: {
-                steamIDParam: friend.steamid,
-              },
-            })
-            .then((res: Object) => {
-              friendsSummary.push(res.data.response.players[0])
-            })
-        })
-      })
-      .catch((error: String) => {
-        // handle error
-        console.log("Error: " + error)
-      })
-  }, [])
+  // setFriendsSummary(getFriendsSummaries(steamId))
+  React.useEffect(() => {}, [])
+
   return (
     <Layout pageTitle={pageTitle}>
-      {friendsSummary.map((friend: Object) => (
+      {resultArray.map((friend: Object) => (
         <div className=" flex flex-row py-1">
           <PlayerSummary
             personaName={friend.personaname}
