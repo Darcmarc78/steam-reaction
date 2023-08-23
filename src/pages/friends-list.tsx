@@ -9,23 +9,34 @@ const pageTitle: string = "Friend's List"
 
 const FriendsListPage = (paramObject: Object) => {
   const [friendsSummary, setFriendsSummary] = React.useState([])
-  let resultArray: any[] = []
+  let resultArray: Object[] = []
   let steamId = paramObject.location.state.yourSteamId
   // Call get-friends-list with user supplied steamId
-  // setFriendsSummary(getFriendsSummaries(steamId))
-  React.useEffect(() => {}, [])
+  React.useEffect(() => {
+    Promise.all([getFriendsSummaries(steamId)])
+      .then((res: any) => {
+        setFriendsSummary(res[0])
+      })
+      .catch((error: string) => {
+        console.log("Error: " + error)
+      })
+  }, [])
 
   return (
     <Layout pageTitle={pageTitle}>
-      {resultArray.map((friend: Object) => (
-        <div className=" flex flex-row py-1">
-          <PlayerSummary
-            personaName={friend.personaname}
-            imageURL={friend.avatarfull}
-            children={undefined}
-          />
-        </div>
-      ))}
+      {friendsSummary ? (
+        friendsSummary.map((friend: Object) => (
+          <div className=" flex flex-row py-1">
+            <PlayerSummary
+              personaName={friend.personaName}
+              imageURL={friend.avatarImage}
+              children={undefined}
+            />
+          </div>
+        ))
+      ) : (
+        <p>No Result</p>
+      )}
     </Layout>
   )
 }

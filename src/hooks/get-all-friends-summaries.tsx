@@ -1,7 +1,9 @@
 import axios from "axios"
 
-async function getFriendsSummaries(id: string) {
-  let resultArray: never[] = []
+function getFriendsSummaries(id: string) {
+  const resultArray: Object[] = []
+  let summaryObject = {}
+  let friendId = ""
   axios
     .get("http://localhost:3000/steam-api/get-friends-list", {
       params: {
@@ -10,15 +12,20 @@ async function getFriendsSummaries(id: string) {
     })
     .then((res: any) => {
       let friendsArray: Array<Object> = res.data.friendslist.friends
-      friendsArray.forEach((friend: Object) => {
-        axios
+      friendsArray.forEach(async (friend: Object) => {
+        return axios
           .get("http://localhost:3000/steam-api/get-player-summary", {
             params: {
               steamIDParam: friend.steamid,
             },
           })
           .then((res: Object) => {
-            resultArray.push(res.data.response.players[0])
+            summaryObject = {
+              friendId: res.data.response.players[0].steamid,
+              personaName: res.data.response.players[0].personaname,
+              avatarImage: res.data.response.players[0].avatarfull,
+            }
+            resultArray.push(summaryObject)
           })
       })
     })
