@@ -1,10 +1,9 @@
 import axios from "axios"
 
 function getFriendsSummaries(id: string) {
-  const resultArray: Object[] = []
+  let promiseArray: any[] = []
   let summaryObject = {}
-  let friendId = ""
-  axios
+  return axios
     .get("http://localhost:3000/steam-api/get-friends-list", {
       params: {
         steamIDParam: id,
@@ -12,8 +11,8 @@ function getFriendsSummaries(id: string) {
     })
     .then((res: any) => {
       let friendsArray: Array<Object> = res.data.friendslist.friends
-      friendsArray.forEach(async (friend: Object) => {
-        return axios
+      friendsArray.forEach((friend: Object) => {
+        let summaryRequest = axios
           .get("http://localhost:3000/steam-api/get-player-summary", {
             params: {
               steamIDParam: friend.steamid,
@@ -25,15 +24,19 @@ function getFriendsSummaries(id: string) {
               personaName: res.data.response.players[0].personaname,
               avatarImage: res.data.response.players[0].avatarfull,
             }
-            resultArray.push(summaryObject)
+            return summaryObject
           })
+        promiseArray.push(summaryRequest)
       })
+      return Promise.all(promiseArray)
+    })
+    .then((friendsSummaries: any) => {
+      return friendsSummaries
     })
     .catch((error: String) => {
       // handle error
       console.log("Error: " + error)
     })
-  return resultArray
 }
 
 export default getFriendsSummaries

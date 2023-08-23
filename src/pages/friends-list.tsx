@@ -8,14 +8,13 @@ import getFriendsSummaries from "../hooks/get-all-friends-summaries"
 const pageTitle: string = "Friend's List"
 
 const FriendsListPage = (paramObject: Object) => {
-  const [friendsSummary, setFriendsSummary] = React.useState([])
+  const [friendsSummary, setFriendsSummary] = React.useState<Array<Object>>([])
   let resultArray: Object[] = []
   let steamId = paramObject.location.state.yourSteamId
-  // Call get-friends-list with user supplied steamId
   React.useEffect(() => {
-    Promise.all([getFriendsSummaries(steamId)])
-      .then((res: any) => {
-        setFriendsSummary(res[0])
+    getFriendsSummaries(steamId)
+      .then((friendsSummaries: Array<Object>) => {
+        setFriendsSummary(friendsSummaries)
       })
       .catch((error: string) => {
         console.log("Error: " + error)
@@ -24,7 +23,7 @@ const FriendsListPage = (paramObject: Object) => {
 
   return (
     <Layout pageTitle={pageTitle}>
-      {friendsSummary ? (
+      {friendsSummary.length > 0 ? (
         friendsSummary.map((friend: Object) => (
           <div className=" flex flex-row py-1">
             <PlayerSummary
@@ -35,7 +34,7 @@ const FriendsListPage = (paramObject: Object) => {
           </div>
         ))
       ) : (
-        <p>No Result</p>
+        <p>Loading</p>
       )}
     </Layout>
   )
