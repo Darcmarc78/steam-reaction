@@ -26,11 +26,21 @@ const FriendsListPage = (paramObject: Object) => {
       {friendsSummary.length > 0 ? (
         friendsSummary.map((friend: Object) => (
           <div className=" flex flex-row py-1">
-            <PlayerSummary
-              personaName={friend.personaName}
-              imageURL={friend.avatarImage}
-              children={undefined}
-            />
+            <div className=" basis-3/4">
+              <PlayerSummary
+                personaName={friend.personaName}
+                imageURL={friend.avatarImage}
+                children={undefined}
+              />
+            </div>
+            <div className="flex basis-1/4 items-center justify-center">
+              <button
+                formAction=""
+                className="flex grow justify-center rounded-full bg-sky-600 text-white"
+              >
+                Compare Games
+              </button>
+            </div>
           </div>
         ))
       ) : (
