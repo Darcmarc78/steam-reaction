@@ -1,9 +1,10 @@
 import React from "react"
-import { SEO } from "../components/seo"
+import { SEO } from "../../components/seo"
 import axios from "axios"
-import Layout from "../components/layout"
-import PlayerSummary from "../components/playersummary"
-import getFriendsSummaries from "../hooks/get-all-friends-summaries"
+import Layout from "../../components/layout"
+import PlayerSummary from "../../components/playersummary"
+import getFriendsSummaries from "../../hooks/get-all-friends-summaries"
+import { Link } from "gatsby"
 
 const pageTitle: string = "Friend's List"
 
@@ -34,12 +35,13 @@ const FriendsListPage = (paramObject: Object) => {
               />
             </div>
             <div className="flex basis-1/4 items-center justify-center">
-              <button
-                formAction=""
+              <Link
                 className="flex grow justify-center rounded-full bg-sky-600 text-white"
+                to="/compare-games"
+                state={{ obj: String }}
               >
-                Compare Games
-              </button>
+                <p>Compare Games</p>
+              </Link>
             </div>
           </div>
         ))
