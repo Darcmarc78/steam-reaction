@@ -37,7 +37,7 @@ const FriendsListPage = (paramObject: Object) => {
             <div className="flex basis-1/4 items-center justify-center">
               <Link
                 className="flex grow justify-center rounded-full bg-sky-600 text-white"
-                to="/compare-games"
+                to="/steam/compare-games"
                 state={{ obj: String }}
               >
                 <p>Compare Games</p>
