@@ -8,7 +8,7 @@ const axios = require("axios")
 const pageTitle = "Compared Games"
 
 const CompareGamesPage = () => {
-  // 
+  //
   React.useEffect(() => {
     // Get MyGames
     // Get FriendsGames
@@ -20,11 +20,18 @@ const CompareGamesPage = () => {
 
   return (
     <Layout pageTitle={pageTitle}>
-      <PlayerSummary
-        personaName={""}
-        imageURL={""}
-        children={undefined}
-      />
+      <div className=" grid divide-x-4 grid-cols-2">
+        <PlayerSummary
+          personaName={"YourProfile"}
+          imageURL={"friend.avatarImage"}
+          children={undefined}
+        />
+        <PlayerSummary
+          personaName={"FriendsProfile"}
+          imageURL={"friend.avatarImage"}
+          children={undefined}
+        />
+      </div>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
       {/* Games Library Component
