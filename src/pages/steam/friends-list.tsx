@@ -10,10 +10,9 @@ const pageTitle: string = "Friend's List"
 
 const FriendsListPage = (paramObject: Object) => {
   const [friendsSummary, setFriendsSummary] = React.useState<Array<Object>>([])
-  let resultArray: Object[] = []
-  let steamId = paramObject.location.state.yourSteamId
+  let userSummary: Object = paramObject.location.state.playerSummary
   React.useEffect(() => {
-    getFriendsSummaries(steamId)
+    getFriendsSummaries(paramObject.location.state.playerSummary.steamid)
       .then((friendsSummaries: Array<Object>) => {
         setFriendsSummary(friendsSummaries)
       })
@@ -38,7 +37,7 @@ const FriendsListPage = (paramObject: Object) => {
               <Link
                 className="flex grow justify-center rounded-full bg-sky-600 text-white"
                 to="/steam/compare-games"
-                state={{ obj: String }}
+                state={{userSummary, friendSummary: friend}}
               >
                 <p>Compare Games</p>
               </Link>

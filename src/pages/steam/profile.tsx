@@ -45,7 +45,7 @@ const ProfilePage = () => {
         imageURL={playerSummary.avatarfull}
         children={undefined}
       />
-      <Link to="/steam/friends-list" state={{ yourSteamId }}>
+      <Link to="/steam/friends-list" state={{ playerSummary }}>
         <p>To Friends List</p>
       </Link>
       <hr className="py-4 " />

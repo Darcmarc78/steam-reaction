@@ -7,8 +7,8 @@ const axios = require("axios")
 
 const pageTitle = "Compared Games"
 
-const CompareGamesPage = () => {
-  //
+// Get playerSummary and Friendslist from previous component
+const CompareGamesPage = (summariesObject: Object) => {
   React.useEffect(() => {
     // Get MyGames
     // Get FriendsGames
@@ -22,13 +22,13 @@ const CompareGamesPage = () => {
     <Layout pageTitle={pageTitle}>
       <div className=" grid divide-x-4 grid-cols-2">
         <PlayerSummary
-          personaName={"YourProfile"}
-          imageURL={"friend.avatarImage"}
+          personaName={summariesObject.location.state.userSummary.personaname}
+          imageURL={summariesObject.location.state.userSummary.avatarfull}
           children={undefined}
         />
         <PlayerSummary
-          personaName={"FriendsProfile"}
-          imageURL={"friend.avatarImage"}
+          personaName={summariesObject.location.state.friendSummary.personaName}
+          imageURL={summariesObject.location.state.friendSummary.avatarImage}
           children={undefined}
         />
       </div>
