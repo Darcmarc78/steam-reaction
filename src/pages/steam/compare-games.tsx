@@ -34,7 +34,7 @@ const CompareGamesPage = (summariesObject: Object) => {
       </div>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
-      {/* Games Library Component
+      {/* Compared Games Library Component
         Uses "Same Games" method  */}
       <Link to="/">
         <p>Back to Home</p>
