@@ -3,13 +3,23 @@ import * as React from "react"
 import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
+import getOwnedGames from "../../hooks/get-owned-games"
 const axios = require("axios")
 
 const pageTitle = "Compared Games"
 
 // Get playerSummary and Friendslist from previous component
 const CompareGamesPage = (summariesObject: Object) => {
+  let userOwnedGames = []
+  let friendOwnedGames = []
   React.useEffect(() => {
+    getOwnedGames(summariesObject.location.state.userSummary.steamid)
+      .then((returnedUserGames: Array<Object>) => {
+        userOwnedGames = returnedUserGames
+      })
+      .catch((error: String) => {
+        console.log("Error: " + error)
+      })
     // Get MyGames
     // Get FriendsGames
     // Get ComparedGames
@@ -20,7 +30,7 @@ const CompareGamesPage = (summariesObject: Object) => {
 
   return (
     <Layout pageTitle={pageTitle}>
-      <div className=" grid divide-x-4 grid-cols-2">
+      <div className=" grid grid-cols-2 divide-x-4">
         <PlayerSummary
           personaName={summariesObject.location.state.userSummary.personaname}
           imageURL={summariesObject.location.state.userSummary.avatarfull}
@@ -34,7 +44,7 @@ const CompareGamesPage = (summariesObject: Object) => {
       </div>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
-      {/* Games Library Component
+      {/* Compared Games Library Component
         Uses "Same Games" method  */}
       <Link to="/">
         <p>Back to Home</p>

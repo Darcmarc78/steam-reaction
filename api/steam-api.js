@@ -77,4 +77,25 @@ router.get('/get-friends-list', cors(corsOptions) , async function (req, res) {
 });
 
 
+// Get all owned games with appinfo excluding free games
+router.get('/get-owned-games', cors(corsOptions) , async function (req, res) {
+  let steamID = req.query.steamIDParam
+  let getOwnedGames =
+  process.env.STEAM_GET_OWNED_GAMES
+    + process.env.STEAM_API_KEY // Get API Key from env
+    + '&steamid='
+    +  steamID
+    + '&format=json&include_appinfo=true'
+  axios.get(getOwnedGames)
+    .then((response) => {
+      // handle success
+      res.send(response.data)
+    })
+    .catch((error) => {
+      // handle error
+      console.log(error)
+      return
+    });
+});
+
 module.exports = router;
