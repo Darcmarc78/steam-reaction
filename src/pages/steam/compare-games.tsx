@@ -4,6 +4,7 @@ import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
 import getOwnedGames from "../../hooks/get-owned-games"
+
 const axios = require("axios")
 
 const pageTitle = "Compared Games"
@@ -12,7 +13,10 @@ const pageTitle = "Compared Games"
 const CompareGamesPage = (summariesObject: Object) => {
   let userOwnedGames = []
   let friendOwnedGames = []
+  const [commonGames, setCommonGames] = React.useState([])
+
   React.useEffect(() => {
+    // Get User Games
     getOwnedGames(summariesObject.location.state.userSummary.steamid)
       .then((returnedUserGames: Array<Object>) => {
         userOwnedGames = returnedUserGames
@@ -20,9 +24,15 @@ const CompareGamesPage = (summariesObject: Object) => {
       .catch((error: String) => {
         console.log("Error: " + error)
       })
-    // Get MyGames
-    // Get FriendsGames
-    // Get ComparedGames
+    // Get Friend's Games
+    getOwnedGames(summariesObject.location.state.friendSummary.friendId)
+      .then((returnedFriendGames: Array<Object>) => {
+        friendOwnedGames = returnedFriendGames
+      })
+      .catch((error: String) => {
+        console.log("Error: " + error)
+      })
+    // Get Common games
     Promise.all([])
       .then((res: Array<Object>) => {})
       .catch((error: String) => {})
