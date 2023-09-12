@@ -4,6 +4,7 @@ import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
 import getOwnedGames from "../../hooks/get-owned-games"
+import findCommonGames from "../../hooks/find-common-games"
 
 const axios = require("axios")
 
@@ -11,30 +12,22 @@ const pageTitle = "Compared Games"
 
 // Get playerSummary and Friendslist from previous component
 const CompareGamesPage = (summariesObject: Object) => {
-  let userOwnedGames = []
-  let friendOwnedGames = []
+  let isFriendsLibraryPublic = true
   const [commonGames, setCommonGames] = React.useState([])
 
   React.useEffect(() => {
-    // Get User Games
-    getOwnedGames(summariesObject.location.state.userSummary.steamid)
-      .then((returnedUserGames: Array<Object>) => {
-        userOwnedGames = returnedUserGames
-      })
-      .catch((error: String) => {
-        console.log("Error: " + error)
-      })
-    // Get Friend's Games
-    getOwnedGames(summariesObject.location.state.friendSummary.friendId)
-      .then((returnedFriendGames: Array<Object>) => {
-        friendOwnedGames = returnedFriendGames
-      })
-      .catch((error: String) => {
-        console.log("Error: " + error)
-      })
     // Get Common games
-    Promise.all([])
-      .then((res: Array<Object>) => {})
+
+    Promise.all([
+      findCommonGames(
+        summariesObject.location.state.userSummary.steamid,
+        summariesObject.location.state.friendSummary.friendId
+      ),
+    ])
+      .then((res: any) => {
+        if (res.length == 0) publicFriendsLibrary = false
+        // console.log(res)
+      })
       .catch((error: String) => {})
   }, [])
 
@@ -56,6 +49,11 @@ const CompareGamesPage = (summariesObject: Object) => {
       <div className="flex-grow border-t-2 border-black py-4" />
       {/* Compared Games Library Component
         Uses "Same Games" method  */}
+      {isFriendsLibraryPublic == true ? (
+        <p> Library!</p>
+      ) : (
+        <p>Friends Library Not Public</p>
+      )}
       <Link to="/">
         <p>Back to Home</p>
       </Link>
