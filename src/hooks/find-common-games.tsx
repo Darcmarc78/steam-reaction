@@ -13,14 +13,16 @@ function findCommonGames(userSteamId: String, friendSteamId: String) {
       if (res[0].length > res[1].length) {
         // make a map with larger array's appid as key
         let userGameMap = new Map(res[0].map((game) => [game.appid, game.name]))
-       // filter userGames array for games with appid in "userGameMap"
+        // filter userGames array for games with appid in "userGameMap"
         let commonGames = res[1].filter((friendGame) =>
           userGameMap.has(friendGame.appid)
         )
         return commonGames
       } else {
         // make a map with larger array's appid as key
-        let friendGameMap = new Map(res[1].map((game) => [game.appid, game.name]))
+        let friendGameMap = new Map(
+          res[1].map((game) => [game.appid, game.name])
+        )
         // filter userGames array for games with appid in "friendGameMap"
         let commonGames = res[0].filter((friendGame) =>
           userGameMap.has(friendGame.appid)
