@@ -85,7 +85,7 @@ router.get('/get-owned-games', cors(corsOptions) , async function (req, res) {
     + process.env.STEAM_API_KEY // Get API Key from env
     + '&steamid='
     +  steamID
-    + '&format=json&include_appinfo=true'
+    + '&format=json&include_appinfo=true&include_played_free_games=true'
   axios.get(getOwnedGames)
     .then((response) => {
       // handle success

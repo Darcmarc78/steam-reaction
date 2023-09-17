@@ -1,30 +1,34 @@
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import * as React from "react"
 import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
 import getOwnedGames from "../../hooks/get-owned-games"
+import findCommonGames from "../../hooks/find-common-games"
+import RecentLibrary from "../../components/recent-library"
+
 const axios = require("axios")
 
 const pageTitle = "Compared Games"
 
 // Get playerSummary and Friendslist from previous component
 const CompareGamesPage = (summariesObject: Object) => {
-  let userOwnedGames = []
-  let friendOwnedGames = []
+  let isFriendsLibraryPublic = true
+  const [commonGames, setCommonGames] = React.useState([])
+
   React.useEffect(() => {
-    getOwnedGames(summariesObject.location.state.userSummary.steamid)
-      .then((returnedUserGames: Array<Object>) => {
-        userOwnedGames = returnedUserGames
+    // Get Common games
+
+    Promise.all([
+      findCommonGames(
+        summariesObject.location.state.userSummary.steamid,
+        summariesObject.location.state.friendSummary.friendId
+      ),
+    ])
+      .then((res: any) => {
+        if (res[0].length == 0) publicFriendsLibrary = false
+        setCommonGames(res[0])
       })
-      .catch((error: String) => {
-        console.log("Error: " + error)
-      })
-    // Get MyGames
-    // Get FriendsGames
-    // Get ComparedGames
-    Promise.all([])
-      .then((res: Array<Object>) => {})
       .catch((error: String) => {})
   }, [])
 
@@ -44,11 +48,24 @@ const CompareGamesPage = (summariesObject: Object) => {
       </div>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
-      {/* Compared Games Library Component
-        Uses "Same Games" method  */}
+      <button
+        onClick={async (event) => {
+          await navigate(-1)
+        }}
+      >
+        <p>Back to Friends List</p>
+      </button>
       <Link to="/">
         <p>Back to Home</p>
       </Link>
+      {isFriendsLibraryPublic == true ? (
+        <RecentLibrary
+          recentlyPlayedLibrary={commonGames}
+          children={undefined}
+        />
+      ) : (
+        <p>Friends Library Not Public</p>
+      )}
     </Layout>
   )
 }
