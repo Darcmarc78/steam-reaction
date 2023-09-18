@@ -13,7 +13,7 @@ export const HeroCapsule = ({
   libraryCapsuleURL,
   children,
 }: HeroCapsuleProps) => {
-  const imageURL = libraryCapsuleURL + appID + "/hero_capsule.jpg"
+  const imageURL = libraryCapsuleURL + appID + "/library_600x900.jpg"
   return (
     <div>
       {/* If image does not successfully render */}
