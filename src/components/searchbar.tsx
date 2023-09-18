@@ -1,5 +1,8 @@
 import * as React from "react"
 
+// Handle formAction
+// Link to ProfilePage with entered steam id as param
+
 const Searchbar = () => {
   return (
     <div className="flex flex-row align-middle">
