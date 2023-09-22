@@ -1,12 +1,15 @@
 import * as React from "react"
+import getPlayerSummary from "../hooks/get-player-summary"
 
 const Searchbar = () => {
-  const [userSteamId, setUserSteamId] = React.useState("")
-
+  const [searchedSteamId, setSearchedSteamId] = React.useState("")
   const handleSubmit = (event: any) => {
     // Prevent the browser from reloading the page
     event.preventDefault()
     // Make call to get Player summary and Recently played games
+    getPlayerSummary(searchedSteamId)
+      .then((res: Object) => {})
+      .catch((err: any) => console.log("ERROR: " + err))
     // Link to ProfilePage with player summary and recently played games
   }
   return (
@@ -16,8 +19,8 @@ const Searchbar = () => {
           className="h-4/6 w-auto rounded-md border-slate-300 bg-black text-white placeholder-white"
           type="text"
           placeholder="Enter Steam Id"
-          value={userSteamId}
-          onChange={(e) => setUserSteamId(e.target.value)}
+          value={searchedSteamId}
+          onChange={(e) => setSearchedSteamId(e.target.value)}
         />
         <button
           type="submit"

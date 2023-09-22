@@ -9,11 +9,17 @@ type LayoutProps = {
 }
 
 const Layout = ({ pageTitle, children }: LayoutProps) => {
+  const [userSummary, setUserSummary] = React.useState({})
+  const [userFound, setUserFound] = React.useState(0) // 0 if not found, 1 if found, etc
+
   return (
     <div>
       <div className="container mx-auto flex basis-full items-center justify-center pb-4">
         <Navbar />
-        <Searchbar />
+        <Searchbar
+          setUserSummary={setUserSummary}
+          setUserFound={setUserFound}
+        />
       </div>
       <main>
         <div className="container mx-auto flex flex-col justify-center">
