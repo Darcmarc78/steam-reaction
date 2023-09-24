@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
 import Navbar from "./navbar"
 import Searchbar from "./searchbar"
 
@@ -9,11 +9,15 @@ type LayoutProps = {
 }
 
 const Layout = ({ pageTitle, children }: LayoutProps) => {
+  const [propState, setPropState] = React.useState(false)
+  const [userSummary, setUserSummary] = React.useState({})
+  // if userSummary is populated, route to Profile Page
   return (
     <div>
       <div className="container mx-auto flex basis-full items-center justify-center pb-4">
         <Navbar />
-        <Searchbar />
+        <Searchbar userSummary={userSummary} setUserSummary={setUserSummary} />
+        
       </div>
       <main>
         <div className="container mx-auto flex flex-col justify-center">
