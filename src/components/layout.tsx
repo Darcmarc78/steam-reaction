@@ -1,6 +1,7 @@
 import * as React from "react"
 import Navbar from "./navbar"
 import Searchbar from "./searchbar"
+import isEmpty from "../hooks/check-empty-object"
 
 type LayoutProps = {
   pageTitle: string
@@ -11,6 +12,10 @@ const Layout = ({ pageTitle, children }: LayoutProps) => {
   const [propState, setPropState] = React.useState(false)
   const [userSummary, setUserSummary] = React.useState({})
   // if userSummary is populated, route to Profile Page
+  if (isEmpty(userSummary)) console.log("userSummary emplty")
+  else {
+    setPropState(true)
+  }
   return (
     <div>
       <div className="container mx-auto flex basis-full items-center justify-center pb-4">

@@ -8,41 +8,24 @@ const axios = require("axios")
 
 const profileName = "Search Result"
 
-const ProfilePage = () => {
+type ProfilePageProps = {
+  userSummary: Object
+  setUserSummary: React.Dispatch<React.SetStateAction<Object>>
+}
+
+const ProfilePage = ({ userSummary, setUserSummary }: ProfilePageProps) => {
   const yourSteamId = "76561198161853165"
   const [playerSummary, setPlayerSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
 
   // Call get-steam-user with user supplied yourSteamId
-  React.useEffect(() => {
-    Promise.all([
-      axios.get("http://localhost:3000/steam-api/get-player-summary", {
-        params: {
-          steamIDParam: yourSteamId,
-        },
-      }),
-      axios.get("http://localhost:3000/steam-api/get-recently-played-games", {
-        params: {
-          steamIDParam: yourSteamId,
-        },
-      }),
-    ])
-      .then((res: Array<Object>) => {
-        // handle success
-        setPlayerSummary(res[0].data.response.players[0])
-        setRecentlyPlayed(res[1].data.response.games)
-      })
-      .catch((error: String) => {
-        // handle error
-        console.log("Error: " + error)
-      })
-  }, [])
+  React.useEffect(() => {}, [])
 
   return (
     <Layout pageTitle={profileName}>
       <PlayerSummary
-        personaName={playerSummary.personaname}
-        imageURL={playerSummary.avatarfull}
+        personaName={userSummary.personaname}
+        imageURL={userSummary.avatarfull}
         children={undefined}
       />
       <Link to="/steam/friends-list" state={{ playerSummary }}>
