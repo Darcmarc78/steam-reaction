@@ -1,14 +1,14 @@
 import axios from "axios"
 
-function getPlayerSummary(id: string) {
+function getRecentlyPlayedGames(id: string) {
   return axios
-    .get("http://localhost:3000/steam-api/get-player-summary", {
+    .get("http://localhost:3000/steam-api/get-recently-played-games", {
       params: {
         steamIDParam: id,
       },
     })
     .then((res: Object) => {
-      return res.data.response.players[0]
+      return res.data.response.games
     })
     .catch((error: String) => {
       // handle error
@@ -16,4 +16,4 @@ function getPlayerSummary(id: string) {
     })
 }
 
-export default getPlayerSummary
+export default getRecentlyPlayedGames
