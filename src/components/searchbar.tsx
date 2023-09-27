@@ -1,25 +1,15 @@
 import * as React from "react"
 import getPlayerSummary from "../hooks/get-player-summary"
-import {navigate} from '@reach/router'
+import { navigate } from "@reach/router"
 
-type SearchbarProps = {
-  userSummary : Object,
-  setUserSummary : React.Dispatch<React.SetStateAction<Object>>
-}
-
-const Searchbar = ({userSummary, setUserSummary}: SearchbarProps) => {
+const Searchbar = () => {
   const [userSteamId, setUserSteamId] = React.useState("")
-
   const handleSubmit = (event: any) => {
     // Prevent the browser from reloading the page
     event.preventDefault()
-    // Make call to get Player summary and Recently played games
-    if(userSteamId != "" && typeof userSteamId === 'string')  {
-      let searchResult = getPlayerSummary(userSteamId)
-      setUserSummary(searchResult)
-      navigate('/steam/profile')
+    if (userSteamId != "" && typeof userSteamId === "string") {
+      navigate("/steam/profile/", { state: { userSteamId } })
     }
-    // Link to ProfilePage with player summary and recently played games
   }
   return (
     <div className="flex flex-row items-center align-middle">

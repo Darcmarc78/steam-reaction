@@ -48,18 +48,21 @@ const CompareGamesPage = (summariesObject: Object) => {
       </div>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
-      <button
-        onClick={async (event) => {
-          await navigate(-1)
-        }}
-      >
-        <p>Back to Friends List</p>
-      </button>
+      <div>
+        <button
+          onClick={async (event) => {
+            await navigate(-1)
+          }}
+        >
+          <p>Back to Friends List</p>
+        </button>
+      </div>
       <Link to="/">
         <p>Back to Home</p>
       </Link>
       {isFriendsLibraryPublic == true ? (
         <RecentLibrary
+          title="List of Common Games"
           recentlyPlayedLibrary={commonGames}
           children={undefined}
         />
