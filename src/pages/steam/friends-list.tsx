@@ -1,6 +1,5 @@
 import React from "react"
 import { SEO } from "../../components/seo"
-import axios from "axios"
 import Layout from "../../components/layout"
 import PlayerSummary from "../../components/playersummary"
 import getFriendsSummaries from "../../hooks/get-all-friends-summaries"
@@ -10,9 +9,9 @@ const pageTitle: string = "Friend's List"
 
 const FriendsListPage = (paramObject: Object) => {
   const [friendsSummary, setFriendsSummary] = React.useState<Array<Object>>([])
-  let userSummary: Object = paramObject.location.state.playerSummary
+  let userSummary: Object = paramObject.location.state.userSummary
   React.useEffect(() => {
-    getFriendsSummaries(paramObject.location.state.playerSummary.steamid)
+    getFriendsSummaries(paramObject.location.state.userSummary.steamid)
       .then((friendsSummaries: Array<Object>) => {
         setFriendsSummary(friendsSummaries)
       })

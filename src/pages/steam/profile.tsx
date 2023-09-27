@@ -11,26 +11,29 @@ const profileName = "Search Result"
 
 const ProfilePage = (paramObject: Object) => {
   let yourSteamId = ""
-  console.log(paramObject.location.state.userSteamId)
-  if (paramObject.location.state != null)
-    yourSteamId = paramObject.location.state.searchedId
-  console.log(yourSteamId)
   const [userSummary, setUserSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
   // Call get-steam-user with user supplied yourSteamId
   React.useEffect(() => {
-    getRecentlyPlayedGames(userSummary.steamid)
-      .then((res: any) => {
-        setRecentlyPlayed(res)
-      })
-      .catch((err: string) => {})
-    getPlayerSummary(yourSteamId)
-      .then((res: any) => {
-        setUserSummary(res)
-      })
-      .catch((err: string) => {
-        console.log(err)
-      })
+    if (
+      paramObject.location.state.userSteamId != null ||
+      paramObject.location.state.userSteamId != undefined
+    ) {
+      yourSteamId = paramObject.location.state.userSteamId
+      getRecentlyPlayedGames(yourSteamId)
+        .then((res: Array<Object>) => {
+          setRecentlyPlayed(res)
+        })
+        .catch((err: string) => {})
+      getPlayerSummary(yourSteamId)
+        .then((res: Object) => {
+          setUserSummary(res)
+        })
+        .catch((err: string) => {
+          console.log(err)
+        })
+    }
+    
   }, [])
 
   return (
@@ -47,6 +50,7 @@ const ProfilePage = (paramObject: Object) => {
       <div className="flex-grow border-t-2 border-black py-4" />
       <RecentLibrary
         recentlyPlayedLibrary={recentlyPlayed}
+        title="Recently Played Library"
         children={undefined}
       />
       <Link to="/">
