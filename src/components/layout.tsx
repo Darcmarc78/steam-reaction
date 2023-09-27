@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import Navbar from "./navbar"
 import Searchbar from "./searchbar"
 
@@ -11,7 +10,7 @@ type LayoutProps = {
 const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
     <div>
-      <div className="container mx-auto flex basis-full justify-center pb-4">
+      <div className="container mx-auto flex basis-full items-center justify-center pb-4">
         <Navbar />
         <Searchbar />
       </div>
