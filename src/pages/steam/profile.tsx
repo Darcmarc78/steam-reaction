@@ -4,22 +4,34 @@ import Layout from "../../components/layout"
 import { SEO } from "../../components/seo"
 import PlayerSummary from "../../components/playersummary"
 import { RecentLibrary } from "../../components/recent-library"
-const axios = require("axios")
+import getRecentlyPlayedGames from "../../hooks/get-recently-played-games"
+import getPlayerSummary from "../../hooks/get-player-summary"
 
 const profileName = "Search Result"
 
-type ProfilePageProps = {
-  userSummary: Object
-  setUserSummary: React.Dispatch<React.SetStateAction<Object>>
-}
-
-const ProfilePage = ({ userSummary, setUserSummary }: ProfilePageProps) => {
-  const yourSteamId = "76561198161853165"
-  const [playerSummary, setPlayerSummary] = React.useState({})
+const ProfilePage = (paramObject: Object) => {
+  let yourSteamId = ""
+  console.log(paramObject.location.state.userSteamId)
+  if (paramObject.location.state != null)
+    yourSteamId = paramObject.location.state.searchedId
+  console.log(yourSteamId)
+  const [userSummary, setUserSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
-
   // Call get-steam-user with user supplied yourSteamId
-  React.useEffect(() => {}, [])
+  React.useEffect(() => {
+    getRecentlyPlayedGames(userSummary.steamid)
+      .then((res: any) => {
+        setRecentlyPlayed(res)
+      })
+      .catch((err: string) => {})
+    getPlayerSummary(yourSteamId)
+      .then((res: any) => {
+        setUserSummary(res)
+      })
+      .catch((err: string) => {
+        console.log(err)
+      })
+  }, [])
 
   return (
     <Layout pageTitle={profileName}>
@@ -28,7 +40,7 @@ const ProfilePage = ({ userSummary, setUserSummary }: ProfilePageProps) => {
         imageURL={userSummary.avatarfull}
         children={undefined}
       />
-      <Link to="/steam/friends-list" state={{ playerSummary }}>
+      <Link to="/steam/friends-list" state={{ userSummary }}>
         <p>To Friends List</p>
       </Link>
       <hr className="py-4 " />
