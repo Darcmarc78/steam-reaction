@@ -1,16 +1,12 @@
 import * as React from "react"
-import Layout from "../components/layout"
 import { SEO } from "../components/seo"
+import HomePage from "./home"
 
-const HomePage = () => {
-  return (
-    <Layout pageTitle="Steam Reaction">
-    </Layout>
-  )
+const App = () => {
+  return <HomePage />
 }
 
 export const Head = () => (
   <SEO title={""} description={""} pathname={""} children={undefined} />
 )
-
-export default HomePage
+export default App

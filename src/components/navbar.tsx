@@ -12,26 +12,9 @@ const Navbar = () => {
             </Link>
           </li>
           <div className="flex flex-row items-center">
-            {/* <li className="px-4">
-              <Link to="/about" className="">
-                About
-              </Link>
-            </li> */}
             <li className="px-4">
-              <Link to="/library" className="">
-                Library
-              </Link>
-            </li>
-            <li className="px-4">
-              <Link to="/discussion" className="">
-                Discussion
-              </Link>
-            </li>
-            {/* Most likely custom login component*/}
-            {/* Place holder steam profile link */}
-            <li className="px-4">
-              <Link to="/steam/profile" className="">
-                Steam Profile
+              <Link to="/your-library" className="">
+                Your Library
               </Link>
             </li>
           </div>
