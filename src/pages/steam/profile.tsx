@@ -33,26 +33,37 @@ const ProfilePage = (paramObject: Object) => {
           console.log(err)
         })
     }
-    
   }, [])
 
   return (
     <Layout pageTitle={profileName}>
-      <PlayerSummary
-        personaName={userSummary.personaname}
-        imageURL={userSummary.avatarfull}
-        children={undefined}
-      />
+      {userSummary ? (
+        <PlayerSummary
+          personaName={userSummary.personaname}
+          imageURL={userSummary.avatarfull}
+          children={undefined}
+        />
+      ) : (
+        <h1 className="flex flex-1 justify-center text-2xl">
+          No Steam user with that Steam Id
+        </h1>
+      )}
       <Link to="/steam/friends-list" state={{ userSummary }}>
         <p>To Friends List</p>
       </Link>
       <hr className="py-4 " />
       <div className="flex-grow border-t-2 border-black py-4" />
-      <RecentLibrary
-        recentlyPlayedLibrary={recentlyPlayed}
-        title="Recently Played Library"
-        children={undefined}
-      />
+      {recentlyPlayed ? (
+        <RecentLibrary
+          recentlyPlayedLibrary={recentlyPlayed}
+          title="Recently Played Library"
+          children={undefined}
+        />
+      ) : (
+        <h1 className="flex flex-1 justify-center text-2xl">
+          No games played in the last two weeks
+        </h1>
+      )}
       <Link to="/">
         <p>Back to Home</p>
       </Link>
