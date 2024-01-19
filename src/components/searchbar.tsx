@@ -1,6 +1,7 @@
 import * as React from "react"
 import getPlayerSummary from "../hooks/get-player-summary"
 import { navigate } from "@reach/router"
+import getRecentlyPlayedGames from "../hooks/get-recently-played-games"
 
 const Searchbar = () => {
   const [userSteamId, setUserSteamId] = React.useState("")
@@ -8,7 +9,16 @@ const Searchbar = () => {
     // Prevent the browser from reloading the page
     event.preventDefault()
     if (userSteamId != "" && typeof userSteamId === "string") {
-      navigate("/steam/profile/", { state: { userSteamId } })
+      Promise.all([getRecentlyPlayedGames(userSteamId), getPlayerSummary(userSteamId)])
+        .then((res: any) => {
+          navigate("/steam/profile/", { state: { res } })
+        })
+        .catch((err: string) => {
+          console.log(err)
+        })
+    }
+    else{
+      alert("Invalid Steam User ID")
     }
   }
   return (

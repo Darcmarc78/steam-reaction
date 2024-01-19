@@ -10,28 +10,16 @@ import getPlayerSummary from "../../hooks/get-player-summary"
 const profileName = "Search Result"
 
 const ProfilePage = (paramObject: Object) => {
-  let yourSteamId = ""
   const [userSummary, setUserSummary] = React.useState({})
   const [recentlyPlayed, setRecentlyPlayed] = React.useState([])
   // Call get-steam-user with user supplied yourSteamId
   React.useEffect(() => {
     if (
-      paramObject.location.state.userSteamId != null ||
-      paramObject.location.state.userSteamId != undefined
+      paramObject.location.state != null ||
+      paramObject.location.state != undefined
     ) {
-      yourSteamId = paramObject.location.state.userSteamId
-      getRecentlyPlayedGames(yourSteamId)
-        .then((res: Array<Object>) => {
-          setRecentlyPlayed(res)
-        })
-        .catch((err: string) => {})
-      getPlayerSummary(yourSteamId)
-        .then((res: Object) => {
-          setUserSummary(res)
-        })
-        .catch((err: string) => {
-          console.log(err)
-        })
+      setRecentlyPlayed(paramObject.location.state.res[0])
+      setUserSummary(paramObject.location.state.res[1])
     }
   }, [])
 
